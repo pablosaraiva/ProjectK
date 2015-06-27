@@ -25,8 +25,9 @@ public class Sinner : MonoBehaviour {
 
 	private void GoToRoom(Room nextRoom) {
 		if (nextRoom != null) {
-			Game game = gameObject.GetComponent<Game>();
-			game.SinnerLeaveRoom(this, currentRoom);
+			//Game game = gameObject.GetComponent<Game>();
+			//game.SinnerLeaveRoom(this, currentRoom);
+			currentRoom.SinnerLeaveRoom(this);
 			currentRoom = nextRoom;
 			gameObject.transform.position = nextRoom.transform.position;
 		} else {
