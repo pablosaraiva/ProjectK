@@ -46,6 +46,12 @@ TagManager:
   - name: Background
     uniqueID: 1812785541
     locked: 0
+  - name: RoomBackElements
+    uniqueID: 3565863987
+    locked: 0
   - name: Sinner
     uniqueID: 3752255285
+    locked: 0
+  - name: RoomFrontElements
+    uniqueID: 1648425951
     locked: 0

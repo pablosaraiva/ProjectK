@@ -69,6 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextRoom: {fileID: 0}
+  reserved: 0
 --- !u!212 &21238726
 SpriteRenderer:
   m_ObjectHideFlags: 1
