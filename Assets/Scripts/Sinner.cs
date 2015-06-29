@@ -14,32 +14,7 @@ public class Sinner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		print (sinPoints);
-		timeInRoom = timeInRoom + Time.deltaTime;
-		if (timeInRoom > 1) {
-			timeInRoom = 0;
-			GoToRoom(currentRoom.nextRoom);
-		}
 
-	}
-
-	private void GoToRoom(Room nextRoom) {
-		if (nextRoom != null) {
-			//Game game = gameObject.GetComponent<Game>();
-			//game.SinnerLeaveRoom(this, currentRoom);
-			currentRoom.SinnerLeaveRoom(this);
-			currentRoom = nextRoom;
-			gameObject.transform.position = nextRoom.transform.position;
-		} else {
-			Destroy(gameObject);
-		}
-	}
-
-	public void Punish(float punishmentPoints) {
-		this.sinPoints = this.sinPoints - punishmentPoints;
-		if (sinPoints < 0) {
-			sinPoints = 0;
-		}
 	}
 
 }

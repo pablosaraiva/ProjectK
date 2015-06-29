@@ -14,7 +14,7 @@ public class Game : MonoBehaviour {
 	}
 
 	public void SinnerLeaveRoom(Sinner sinner, Room origin) {
-		origin.SinnerLeaveRoom (sinner);
+		//origin.SinnerLeaveRoom (sinner);
 	}
 
 }
