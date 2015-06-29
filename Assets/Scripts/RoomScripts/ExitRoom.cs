@@ -24,7 +24,7 @@ public class ExitRoom : Room {
 
 	public override bool CanSinnerArrive ()
 	{
-		return this.sinner == null;
+		return this.sinner == null  && !reserved;
 	}
 
 	public override bool CanSetNextRoom ()
@@ -34,6 +34,7 @@ public class ExitRoom : Room {
 
 	public override void OnSinnerArive (Sinner sinner)
 	{
+		reserved = false;
 		this.sinner = sinner;
 		//TODO fix entry position
 		sinner.transform.position = transform.position;

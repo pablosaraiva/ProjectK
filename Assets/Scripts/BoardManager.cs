@@ -17,11 +17,11 @@ public class BoardManager : MonoBehaviour {
 	private GameObject deskRoomInstance;
 
 	//TODO pass it in some other way
-	private int roomWidth = 128;
-	private int roomHeight = 64;
+	private float roomWidth = Room.roomWidth;
+	private float roomHeight = Room.roomHeight;
 
-	private int distanceInterRoomsWidth = 20;
-	private int distanceInterRoomsHeight = 20;
+	private int distanceInterRoomsWidth = 30;
+	private int distanceInterRoomsHeight = 30;
 
 	private Dictionary<RoomIndex, Room> roomsDict = new Dictionary<RoomIndex, Room>();
 
@@ -81,7 +81,7 @@ public class BoardManager : MonoBehaviour {
 	}
 
 	private float timeCounterToNextSinner = 0;
-	private float nextSinnerDelta = 1;
+	private float nextSinnerDelta = 1.5F;
 
 	void Update(){
 		timeCounterToNextSinner += Time.deltaTime;
