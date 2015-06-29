@@ -17,4 +17,8 @@ public class Game : MonoBehaviour {
 		origin.SinnerLeaveRoom (sinner);
 	}
 
+	void OnGUI() {
+
+	}
+
 }
