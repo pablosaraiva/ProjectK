@@ -3,16 +3,16 @@ using System.Collections;
 
 public class CamController : MonoBehaviour {
 
-	private float minZoom = 100;
-	private float maxZoom = 500;
-	private float sensitivity = 20;
+	private float minZoom = 50;
+	private float maxZoom = 700;
+	private float scrollSensitivity = 50F;
 
 	private float mouseSensitivity = 1;
 	private Vector3 lastPosition;
 	
 	// Update is called once per frame
 	void Update () {
-		float zoom = Input.GetAxis ("Mouse ScrollWheel") * sensitivity;
+		float zoom = Input.GetAxis ("Mouse ScrollWheel") * scrollSensitivity * -1;
 		//print (zoom);
 		Camera camera = GetComponent<Camera> ();
 		camera.orthographicSize = Mathf.Max(Mathf.Min(zoom + camera.orthographicSize, maxZoom), minZoom);
