@@ -43,8 +43,11 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Background
+  - name: MapBackground
     uniqueID: 1812785541
+    locked: 0
+  - name: RoomBackGround
+    uniqueID: 1120290591
     locked: 0
   - name: RoomBackElements
     uniqueID: 3565863987
@@ -54,4 +57,7 @@ TagManager:
     locked: 0
   - name: RoomFrontElements
     uniqueID: 1648425951
+    locked: 0
+  - name: Border
+    uniqueID: 2427391795
     locked: 0
