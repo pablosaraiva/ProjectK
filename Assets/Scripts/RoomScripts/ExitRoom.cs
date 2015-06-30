@@ -8,12 +8,7 @@ public class ExitRoom : Room {
 	private float timeCounter = 0;
 	void Update () {
 		if (sinner != null) {
-			timeCounter += Time.deltaTime;
-			
-			if(timeCounter>=2 && HasNextRoom()){
-				nextRoom.OnSinnerArive(sinner);
-				sinner = null;
-			}
+
 		}
 	}
 
@@ -37,6 +32,12 @@ public class ExitRoom : Room {
 		reserved = false;
 		this.sinner = sinner;
 		//TODO fix entry position
-		sinner.transform.position = transform.position;
+		sinner.transform.position = transform.position - new Vector3(roomWidth/2 + sinnerWidth/2, 0, 0);
+
+		sinner.MoveToTarget (this.transform.position, ArriveOnMiddleCallback);
+	}
+
+	public void ArriveOnMiddleCallback(Sinner sinner){
+		//TODO play the animation of 'gone', than kill the instance, and calculate the points? 
 	}
 }
