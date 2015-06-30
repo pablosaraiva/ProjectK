@@ -10,6 +10,7 @@ public abstract class Room : MonoBehaviour {
 	public readonly static float roomHeight = 64;
 	public readonly static float sinnerWidth = 18;
 
+
 	public virtual bool HasNextRoom(){
 		return nextRoom != null;
 	}

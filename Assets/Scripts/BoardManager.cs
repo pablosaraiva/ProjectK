@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System;
+using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
 public class BoardManager : MonoBehaviour {
@@ -13,6 +14,7 @@ public class BoardManager : MonoBehaviour {
 	public GameObject exitRoomPrefab;
 	public GameObject[] punishmentRoomPrefabs;
 
+
 	private GameObject firstWaitRoomInstance;
 	private GameObject deskRoomInstance;
 
@@ -20,8 +22,8 @@ public class BoardManager : MonoBehaviour {
 	private float roomWidth = Room.roomWidth;
 	private float roomHeight = Room.roomHeight;
 
-	private int distanceInterRoomsWidth = 30;
-	private int distanceInterRoomsHeight = 30;
+	private int distanceInterRoomsWidth = 80;
+	private int distanceInterRoomsHeight = 60;
 
 	private Dictionary<RoomIndex, Room> roomsDict = new Dictionary<RoomIndex, Room>();
 
@@ -47,6 +49,10 @@ public class BoardManager : MonoBehaviour {
 	}
 
 	public void StetupScene(){
+
+		if (FindObjectOfType<EventSystem> () == null) {
+
+		}
 
 		Transform boardHolder = new GameObject ("Rooms").transform;
 		//Create the deskroom
@@ -78,17 +84,21 @@ public class BoardManager : MonoBehaviour {
 		roomsDict [new RoomIndex (0, (int)maxSlotHeight / 2)].nextRoom = roomsDict [new RoomIndex (0, (int)maxSlotHeight / 2)];
 		deskRoomInstance.GetComponent<Room> ().nextRoom = roomsDict [new RoomIndex (0, (int)maxSlotHeight / 2)];
 
+		foreach (RoomIndex ri in roomsDict.Keys) {
+			if(ri.x == 0){
+				deskRoomInstance.GetComponent<DeskRoom>().AddToFirstRoomsList(roomsDict[ri]);
+			}
+		}
+
 	}
 
-	private float timeCounterToNextSinner = 0;
-	private float nextSinnerDelta = 1.5F;
+	void Start(){
+		InvokeRepeating ("TrySendNextSinner", 1.0F, 1.5F);
+	}
 
-	void Update(){
-		timeCounterToNextSinner += Time.deltaTime;
-
-		if (timeCounterToNextSinner >= nextSinnerDelta && firstWaitRoomInstance.GetComponent<Room>().CanSinnerArrive()) {
+	void TrySendNextSinner(){
+		if (firstWaitRoomInstance.GetComponent<Room> ().CanSinnerArrive ()) {
 			firstWaitRoomInstance.GetComponent<Room>().OnSinnerArive((Instantiate(sinnerPrefab) as GameObject).GetComponent<Sinner>());
-			timeCounterToNextSinner = 0;
 		}
 	}
 	
