@@ -14,24 +14,21 @@ public class WaitingRoom : Room {
 	// Use this for initialization
 	void Start () {
 		sinnersList = new List<Sinner> ();
+
+		InvokeRepeating ("TrySendToNextRoom", 1.0F, 1.0F);
 	}
 
 	// Update is called once per frame
 	void Update () {
-		//TODO just a test method;
+	}
 
-		//Move the sinner if time here is over
-		if (timeCounter >= 7 && sinnersList.Count > 0) {
-			if (HasNextRoom() && nextRoom.CanSinnerArrive()) {
-				Sinner sinnerToMove = sinnersList [0];
-				sinnersList.RemoveAt (0);
-				sinnerToMove.MoveToTarget(this.transform.position + new Vector3(roomWidth/2 + sinnerWidth/2, 0, 0), WalkOutsideCallBack);
-				nextRoom.ReserveSinnerPlace();
-				timeCounter = 0;
-				RearangeSinnersPosition();
-			}
-		} else if (sinnersList.Count > 0) {
-			timeCounter += Time.deltaTime;
+	void TrySendToNextRoom(){
+		if (sinnersList.Count > 0 && HasNextRoom () && nextRoom.CanSinnerArrive ()) {
+			Sinner sinnerToMove = sinnersList [0];
+			sinnersList.Remove(sinnerToMove);
+			sinnerToMove.MoveToTarget(this.transform.position + new Vector3(roomWidth/2 + sinnerWidth/2, 0, 0), WalkOutsideCallBack);
+			nextRoom.ReserveSinnerPlace();
+			RearangeSinnersPosition();
 		}
 	}
 
