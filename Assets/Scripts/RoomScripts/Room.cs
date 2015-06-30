@@ -6,7 +6,7 @@ public abstract class Room : MonoBehaviour {
 	public Room nextRoom;
 	public bool reserved = false;
 
-	public readonly static float roomWidth = 128;
+	public readonly static float roomWidth = 128-6;
 	public readonly static float roomHeight = 64;
 	public readonly static float sinnerWidth = 18;
 
