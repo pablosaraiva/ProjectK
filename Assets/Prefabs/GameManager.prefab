@@ -117,7 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSlotWidth: 4
   maxSlotHeight: 4
-  sinnerPrefab: {fileID: 135968, guid: 278af5e30b3d158428b386972a5cc2bb, type: 2}
+  sinnerPrefab: {fileID: 178882, guid: 278af5e30b3d158428b386972a5cc2bb, type: 2}
   waitingRoomPrefab: {fileID: 159218, guid: f261b714f90fe0041abba884ef10583e, type: 2}
   deskRoomPrefab: {fileID: 188426, guid: 7635353875f20114bafa48fb44a320ae, type: 2}
   exitRoomPrefab: {fileID: 108032, guid: ed83f68f5365d0340b17700f86c9aaf6, type: 2}
@@ -141,7 +141,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: sinnerPrefab
+      value: 
+      objectReference: {fileID: 178882, guid: 278af5e30b3d158428b386972a5cc2bb, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 124798}
