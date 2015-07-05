@@ -5,7 +5,7 @@ public class NewPunishmentRoomButton : MonoBehaviour {
 
 	public GameObject punishmentRoomPrefab;
 	private GameObject newRoom;
-	public Vector2 gridSize = new Vector2 (140, 70);
+	public Vector2 gridSize = new Vector2 (142, 70);
 
 	void Start() {
 		CanvasRenderer renderer = GetComponent<CanvasRenderer> () as CanvasRenderer;

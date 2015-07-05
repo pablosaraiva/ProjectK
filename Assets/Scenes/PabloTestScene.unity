@@ -260,7 +260,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 475914, guid: ed83f68f5365d0340b17700f86c9aaf6, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 420
+      value: 426
       objectReference: {fileID: 0}
     - target: {fileID: 475914, guid: ed83f68f5365d0340b17700f86c9aaf6, type: 2}
       propertyPath: m_LocalPosition.y
@@ -310,7 +310,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 461882, guid: 7635353875f20114bafa48fb44a320ae, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 140
+      value: 142
       objectReference: {fileID: 0}
     - target: {fileID: 461882, guid: 7635353875f20114bafa48fb44a320ae, type: 2}
       propertyPath: m_LocalPosition.y
@@ -494,7 +494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   punishmentRoomPrefab: {fileID: 108502, guid: 124c0a9fa95fe5c43a83624ffb806ccf, type: 2}
-  gridSize: {x: 140, y: 70}
+  gridSize: {x: 142, y: 70}
 --- !u!1 &1183608433
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,7 +613,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 429418, guid: 124c0a9fa95fe5c43a83624ffb806ccf, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 280
+      value: 284
       objectReference: {fileID: 0}
     - target: {fileID: 429418, guid: 124c0a9fa95fe5c43a83624ffb806ccf, type: 2}
       propertyPath: m_LocalPosition.y
