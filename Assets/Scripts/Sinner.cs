@@ -37,7 +37,7 @@ public class Sinner : MonoBehaviour {
 
 	IEnumerator Movement (Vector3 target, Action<Sinner> onMoveFinishCallback)
 	{
-		Animator animator = GetComponent<Animator> ();
+		Animator animator = transform.Find("RenderObject").GetComponent<Animator> ();
 		animator.SetBool ("walking", true);
 		while(Vector3.Distance(transform.position, target) > 0.05f)
 		{
