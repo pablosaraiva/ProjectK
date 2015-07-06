@@ -21,7 +21,7 @@ public class NewPunishmentRoomButton : MonoBehaviour {
 		if (newRoom != null) {
 			Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			int gridPositionX = Mathf.RoundToInt (mouseWorldPosition.x / gridSize.x);
-			int gridPositionY = Mathf.RoundToInt(mouseWorldPosition.y / gridSize.y);
+			int gridPositionY = Mathf.RoundToInt((mouseWorldPosition.y - (gridSize.y / 2)) / gridSize.y);
 			Vector2 worldPosition = new Vector2(gridSize.x * gridPositionX, gridSize.y * gridPositionY);
 			newRoom.transform.position =  worldPosition;
 
