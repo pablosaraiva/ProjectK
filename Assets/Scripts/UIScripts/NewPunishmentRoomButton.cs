@@ -6,6 +6,7 @@ public class NewPunishmentRoomButton : MonoBehaviour {
 	public GameObject punishmentRoomPrefab;
 	private GameObject newRoom;
 	public Vector2 gridSize = new Vector2 (142, 70);
+	public UIShowHide doh;
 
 	void Start() {
 		CanvasRenderer renderer = GetComponent<CanvasRenderer> () as CanvasRenderer;
@@ -22,13 +23,16 @@ public class NewPunishmentRoomButton : MonoBehaviour {
 			int gridPositionX = Mathf.RoundToInt (mouseWorldPosition.x / gridSize.x);
 			int gridPositionY = Mathf.RoundToInt(mouseWorldPosition.y / gridSize.y);
 			Vector2 worldPosition = new Vector2(gridSize.x * gridPositionX, gridSize.y * gridPositionY);
-			print ("Mouse Position: " + Input.mousePosition);
-			print ("Mouse World Position: " + mouseWorldPosition);
-			print ("Grid Position: " + gridPositionX + ", " + gridPositionY);
-			print ("World Position: " + worldPosition);
 			newRoom.transform.position =  worldPosition;
-			if (Input.GetButtonDown("Fire1")) {
-				newRoom = null;
+
+			Rigidbody2D rb = newRoom.GetComponent<Rigidbody2D> ();
+			if (rb.IsTouchingLayers()) {
+				doh.show ();
+			} else {
+				doh.hide ();
+				if (Input.GetButtonDown("Fire1")) {
+					newRoom = null;
+				}
 			}
 		}
 	}
