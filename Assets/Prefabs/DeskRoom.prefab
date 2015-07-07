@@ -41,7 +41,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 461882}
   - 114: {fileID: 11435594}
-  - 61: {fileID: 6106342}
   m_Layer: 0
   m_Name: DeskRoom
   m_TagString: Untagged
@@ -116,19 +115,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 461882}
   m_RootOrder: 0
---- !u!61 &6106342
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 188426}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
 --- !u!114 &11435594
 MonoBehaviour:
   m_ObjectHideFlags: 1

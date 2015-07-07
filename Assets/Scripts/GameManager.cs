@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour {
 	void InitGame(){
 		boardScript.StetupScene ();
 		GameObject HudManager = Instantiate (GAMEHudPrefab);
-		HudManager.transform.Find ("NewPunishmentRoomButton").GetComponent<NewPunishmentRoomButton> ().boardManager = boardScript;
+		HudManager.transform.Find ("NewPunishmentRoomButton").GetComponent<NewPunishmentRoomButton> ().setBoardManager(boardScript);
 	}
 	
 	// Update is called once per frame
