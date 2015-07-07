@@ -1,25 +1,14 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Sinner : MonoBehaviour {
 
 	public Room currentRoom;
-	public float sinPoints = 200;
+	private List<Sin> sins = new List<Sin>();
 	
 	private float maxSpeed = 20f;
-
-	/*
-	public Vector3 Target
-	{
-		get{ return target; }set
-		{
-			target = value;
-
-			StopCoroutine("Movement");
-			StartCoroutine("Movement", target);
-		}
-	}*/
 
 	public void MoveToTarget(Vector3 target, Action<Sinner> onMoveFinishCallback){
 		this.target = target;
@@ -49,6 +38,15 @@ public class Sinner : MonoBehaviour {
 		animator.SetBool ("walking", false);
 		if (onMoveFinishCallback != null) {
 			onMoveFinishCallback (this);
+		}
+	}
+
+	public List<Sin> Sins {
+		get {
+			return this.sins;
+		}
+		set {
+			sins = value;
 		}
 	}
 }

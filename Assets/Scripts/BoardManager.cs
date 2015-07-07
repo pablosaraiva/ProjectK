@@ -95,6 +95,8 @@ public class BoardManager : MonoBehaviour {
 		if (firstWaitRoomInstance.CanSinnerArrive ()) {
 			Sinner si = (Instantiate(sinnerPrefab) as GameObject).GetComponent<Sinner>();
 			si.transform.SetParent(sinnersHolder);
+			//TODO change (random?) sin.Type assigment and amount
+			si.Sins.Add(new Sin(Sin.Type.Wrath, 100));
 			firstWaitRoomInstance.OnSinnerArive(si);
 		}
 	}
