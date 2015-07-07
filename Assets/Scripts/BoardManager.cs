@@ -23,9 +23,10 @@ public class BoardManager : MonoBehaviour {
 	private float roomHeight = Room.roomHeight;
 
 	private int distanceInterRoomsWidth = 80;
-	private int distanceInterRoomsHeight = 100;
+	private int distanceInterRoomsHeight = 40;
 
-	private Transform boardHolder;
+	private Transform roomsHolder;
+	private Transform sinnersHolder;
 
 	private Dictionary<RoomIndex, Room> roomsDict = new Dictionary<RoomIndex, Room>();
 
@@ -56,36 +57,21 @@ public class BoardManager : MonoBehaviour {
 
 		}
 
-		boardHolder = new GameObject ("Rooms").transform;
+		roomsHolder = new GameObject ("Rooms").transform;
+		sinnersHolder = new GameObject ("Sinners").transform;
+
 		//Create the deskroom
 		deskRoomInstance = (Instantiate (deskRoomPrefab, Vector3.zero, Quaternion.identity) as GameObject).GetComponent<DeskRoom>();
 		AddRoomAtIndexAndSetPosition (new RoomIndex (-1, 0), deskRoomInstance);
 
 		//create waiting Room
 		firstWaitRoomInstance = (Instantiate (waitingRoomPrefab, Vector3.zero, Quaternion.identity)as GameObject).GetComponent<WaitingRoom>();
-		                         AddRoomAtIndexAndSetPosition(new RoomIndex(-2, 0), firstWaitRoomInstance);
+		AddRoomAtIndexAndSetPosition(new RoomIndex(-2, 0), firstWaitRoomInstance);
 
 		firstWaitRoomInstance.nextRoom = deskRoomInstance;
 
 
-		for (int x  = 0; x<maxSlotWidth; x++) {
-			for (int y = 0; y < maxSlotHeight; y++) {
-				RoomIndex roomIndex = new RoomIndex(x,y);
-				GameObject toInstantiate = waitingRoomPrefab;
-				if( x == 0 && y == (int)maxSlotHeight/2){
-					toInstantiate = punishmentRoomPrefabs[0];
-				}else if( x == 1 && y == (int)maxSlotHeight/2){
-					toInstantiate = exitRoomPrefab;
-				}
-				GameObject instance = Instantiate(toInstantiate, GridToWorld3(roomIndex), Quaternion.identity) as GameObject;
-				instance.transform.SetParent(boardHolder);
-
-				roomsDict.Add(roomIndex, instance.GetComponent<Room>());
-			}
-		}
-
-		roomsDict [new RoomIndex (0, (int)maxSlotHeight / 2)].nextRoom = roomsDict [new RoomIndex (1, (int)maxSlotHeight / 2)];
-		deskRoomInstance.nextRoom = roomsDict [new RoomIndex (0, (int)maxSlotHeight / 2)];
+		CreateInitialRooms ();
 
 		foreach (RoomIndex ri in roomsDict.Keys) {
 			if(ri.x == 0){
@@ -95,13 +81,21 @@ public class BoardManager : MonoBehaviour {
 
 	}
 
+	private void CreateInitialRooms(){
+		Room exitRoom = AddRoomAtIndexAndSetPosition (new RoomIndex (1, 0), (Instantiate (exitRoomPrefab) as GameObject).GetComponent<Room> ());
+		AddRoomAtIndexAndSetPosition (new RoomIndex (0, 0), (Instantiate (punishmentRoomPrefabs[0]) as GameObject).GetComponent<Room> ()).nextRoom = exitRoom;
+
+	}
+
 	void Start(){
 		InvokeRepeating ("TrySendNextSinner", 1.0F, 1.5F);
 	}
 
 	void TrySendNextSinner(){
 		if (firstWaitRoomInstance.CanSinnerArrive ()) {
-			firstWaitRoomInstance.OnSinnerArive((Instantiate(sinnerPrefab) as GameObject).GetComponent<Sinner>());
+			Sinner si = (Instantiate(sinnerPrefab) as GameObject).GetComponent<Sinner>();
+			si.transform.SetParent(sinnersHolder);
+			firstWaitRoomInstance.OnSinnerArive(si);
 		}
 	}
 
@@ -113,17 +107,19 @@ public class BoardManager : MonoBehaviour {
 		return IsSlotFree(new RoomIndex(indexX, indexY));
 	}
 
-	public void AddRoomAtIndex(RoomIndex ri, Room room){
+	public Room AddRoomAtIndex(RoomIndex ri, Room room){
 		roomsDict.Add (ri, room);
 		if (ri.x == 0) {
 			deskRoomInstance.AddToFirstRoomsList(roomsDict[ri]);
 		}
-		room.transform.SetParent (boardHolder);
+		room.transform.SetParent (roomsHolder);
+		return room;
 	}
 
-	public void AddRoomAtIndexAndSetPosition(RoomIndex ri, Room room){
+	public Room AddRoomAtIndexAndSetPosition(RoomIndex ri, Room room){
 		AddRoomAtIndex (ri, room);
 		room.transform.position = GridToWorld3 (ri);
+		return room;
 	}
 
 	public Vector2 GridToWorld2(RoomIndex ri){
