@@ -10,7 +10,7 @@ public class WaitingRoom : Room {
 
 
 
-	private float timeCounter = 0;
+
 	// Use this for initialization
 	void Start () {
 		sinnersList = new List<Sinner> ();
