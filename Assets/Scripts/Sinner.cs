@@ -11,17 +11,13 @@ public class Sinner : MonoBehaviour {
 	private float maxSpeed = 20f;
 
 	public void MoveToTarget(Vector3 target, Action<Sinner> onMoveFinishCallback){
-		this.target = target;
 		if(mouvementCoroutine!=null)
 			StopCoroutine (mouvementCoroutine);
 		mouvementCoroutine = StartCoroutine(Movement(target, onMoveFinishCallback));
-			
 
 	}
 
 	Coroutine mouvementCoroutine = null;
-
-	private Vector3 target;
 
 
 	IEnumerator Movement (Vector3 target, Action<Sinner> onMoveFinishCallback)

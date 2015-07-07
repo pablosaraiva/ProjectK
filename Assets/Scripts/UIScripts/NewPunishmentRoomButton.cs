@@ -27,7 +27,6 @@ public class NewPunishmentRoomButton : MonoBehaviour {
 			BoardManager.RoomIndex gridIndex = boardManager.WorldSnapToGrid(mouseWorldPosition);
 			newRoom.transform.position =  boardManager.GridToWorld2(gridIndex);
 
-			Rigidbody2D rb = newRoom.GetComponent<Rigidbody2D> ();
 			if (!boardManager.IsSlotFree(gridIndex)) {
 				doh.show ();
 			} else {
