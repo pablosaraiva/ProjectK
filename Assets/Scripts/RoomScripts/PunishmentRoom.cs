@@ -10,8 +10,9 @@ public class PunishmentRoom : Room {
 		if (sinner != null) {
 			timeCounter += Time.deltaTime;
 			
-			if(timeCounter>=2 && HasNextRoom()){
+			if(timeCounter>=2 && HasNextRoom() && nextRoom.CanSinnerArrive()){
 				nextRoom.OnSinnerArive(sinner);
+				timeCounter = 0;
 				sinner = null;
 			}
 		}

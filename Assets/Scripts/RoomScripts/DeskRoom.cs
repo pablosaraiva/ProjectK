@@ -9,18 +9,8 @@ public class DeskRoom : Room {
 	public GameObject GoFirstRoomGUIPrefab;
 
 	private List<Room> firstRoomsList = new List<Room>();
-
-
-	private float timeCounter = 0;
+	
 	void Update () {
-		if (sinner != null) {
-			timeCounter += Time.deltaTime;
-
-			if(timeCounter>=2 && HasNextRoom()){
-				nextRoom.OnSinnerArive(sinner);
-				sinner = null;
-			}
-		}
 	}
 
 	public override bool HasNextRoom ()
@@ -57,20 +47,33 @@ public class DeskRoom : Room {
 			gUICanvasMoveToFirstRoom.transform.SetParent(guiHolder.transform);
 			Room capturedRoom = r;
 			gUICanvasMoveToFirstRoom.transform.Find("MoveButton").gameObject.GetComponent<Button>().onClick.AddListener(() => {
-				nextRoom = capturedRoom;
-				sinner.MoveToTarget (this.transform.position + new Vector3 (roomWidth / 2 + sinnerWidth / 2, 0, 0), WalkOutsideCallBack);
-				Destroy(guiHolder);
-				Invoke("FreeRoomForNextSinner", 0.8F);
+				if(capturedRoom.CanSinnerArrive()){
+					nextRoom = capturedRoom;
+					sinner.MoveToTarget (this.transform.position + new Vector3 (roomWidth / 2 + sinnerWidth / 2, 0, 0), WalkOutsideCallBack);
+					Destroy(guiHolder);
+					Invoke("FreeRoomForNextSinner", 0.8F);
+				}
 			});
 		}
 	}
 
 	public void AddToFirstRoomsList(Room room){
 		firstRoomsList.Add (room);
+		Transform gh = transform.Find("GUI HOLDER");
+		if (gh != null) {
+			Destroy(gh.gameObject);
+			ShowGUIOfFirstRooms(sinner);
+		}
+
 	}
 
 	public void RemoveFromFirstRoomsList(Room room){
 		firstRoomsList.Remove (room);
+		Transform gh = transform.Find("GUI HOLDER");
+		if (gh != null) {
+			Destroy(gh.gameObject);
+			ShowGUIOfFirstRooms(sinner);
+		}
 	}
 
 	public List<Room> GetFirstRoomsList(){
