@@ -2,8 +2,12 @@
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
+
+	[HideInInspector]
 	public static GameManager instace = null;
+
 	public BoardManager boardScript;
+	public GameObject GAMEHudPrefab;
 
 	// Use this for initialization
 	void Awake () {
@@ -20,6 +24,8 @@ public class GameManager : MonoBehaviour {
 
 	void InitGame(){
 		boardScript.StetupScene ();
+		GameObject HudManager = Instantiate (GAMEHudPrefab);
+		HudManager.transform.Find ("NewPunishmentRoomButton").GetComponent<NewPunishmentRoomButton> ().boardManager = boardScript;
 	}
 	
 	// Update is called once per frame
