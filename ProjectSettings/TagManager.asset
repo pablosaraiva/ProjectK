@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Sinner
   - Room
+  - SinPointsUI
   layers:
   - Default
   - TransparentFX

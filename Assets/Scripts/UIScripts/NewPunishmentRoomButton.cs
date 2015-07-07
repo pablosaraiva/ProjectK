@@ -35,6 +35,8 @@ public class NewPunishmentRoomButton : MonoBehaviour {
 				if (Input.GetButtonDown("Fire1")) {
 					boardManager.AddRoomAtIndex(gridIndex, newRoom.GetComponent<Room>());
 					newRoom = null;
+					GameManagerScript gameManagerScript = GameManagerScript.instance;
+					gameManagerScript.RemoveSinPoints(100);
 				} else if (Input.GetButtonDown("Fire2")) {
 					Destroy (newRoom);
 				}
