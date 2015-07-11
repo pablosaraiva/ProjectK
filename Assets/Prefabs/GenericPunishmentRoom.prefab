@@ -99,6 +99,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextRoom: {fileID: 0}
   reserved: 0
+  punishments:
+  - type: 0
+    amount: 20
+  - type: 1
+    amount: 20
+  - type: 2
+    amount: 20
+  - type: 3
+    amount: 20
+  - type: 4
+    amount: 20
+  - type: 5
+    amount: 20
+  - type: 6
+    amount: 20
+  roomCost: 10
 --- !u!212 &21204402
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -159,6 +175,10 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: punishments.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: m_LocalPosition.y
       value: -1000
       objectReference: {fileID: 0}
@@ -185,6 +205,62 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.x
       value: -1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: punishments.Array.data[0].amount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: punishments.Array.data[1].amount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: punishments.Array.data[2].amount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: punishments.Array.data[1].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: punishments.Array.data[2].type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: punishments.Array.data[3].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: punishments.Array.data[3].amount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: punishments.Array.data[4].type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: punishments.Array.data[5].type
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: punishments.Array.data[6].type
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: roomCost
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: punishments.Array.data[6].amount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: punishments.Array.data[5].amount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: punishments.Array.data[4].amount
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

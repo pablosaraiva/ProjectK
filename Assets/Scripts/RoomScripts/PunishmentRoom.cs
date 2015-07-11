@@ -1,9 +1,24 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
+using System.Collections.Generic;
+
+
 
 public class PunishmentRoom : Room {
+	
+	[Serializable]
+	public class SinEntry{
+		public Sin.Type type;
+		public int amount;
+	}
 
-	Sinner sinner;
+	public SinEntry[] punishments;
+
+	public int roomCost;
+	
+
+	private Sinner sinner;
 
 	private float timeCounter = 0;
 	void Update () {
@@ -11,9 +26,20 @@ public class PunishmentRoom : Room {
 			timeCounter += Time.deltaTime;
 			
 			if(timeCounter>=2 && HasNextRoom() && nextRoom.CanSinnerArrive()){
+				Punish();
 				nextRoom.OnSinnerArive(sinner);
 				timeCounter = 0;
 				sinner = null;
+			}
+		}
+	}
+
+	public virtual void Punish(){
+		foreach(SinEntry se in punishments){
+			foreach(Sin sin in sinner.Sins){
+				if(se.type == sin.SinType){
+					sinner.IncreasePointsOfPunishment(sin.ReduceSinAmount(se.amount));
+				}
 			}
 		}
 	}
