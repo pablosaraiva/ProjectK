@@ -4,6 +4,7 @@ using System.Collections;
 public abstract class Room : MonoBehaviour {
 
 	public Room nextRoom;
+	[HideInInspector]
 	public bool reserved = false;
 
 	public readonly static float roomWidth = 128-6;

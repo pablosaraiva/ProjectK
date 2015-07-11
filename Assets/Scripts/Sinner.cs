@@ -10,6 +10,8 @@ public class Sinner : MonoBehaviour {
 	
 	private float maxSpeed = 20f;
 
+	private int pointsOfPunishment = 0;
+
 	public void MoveToTarget(Vector3 target, Action<Sinner> onMoveFinishCallback){
 		if(mouvementCoroutine!=null)
 			StopCoroutine (mouvementCoroutine);
@@ -44,5 +46,15 @@ public class Sinner : MonoBehaviour {
 		set {
 			sins = value;
 		}
+	}
+
+	int PointsOfPunishment {
+		get {
+			return this.pointsOfPunishment;
+		}
+	}
+
+	public void IncreasePointsOfPunishment(int amount){
+		pointsOfPunishment += amount;
 	}
 }

@@ -18,7 +18,7 @@ public class BoardManager : MonoBehaviour {
 	private WaitingRoom firstWaitRoomInstance;
 	private DeskRoom deskRoomInstance;
 
-	//TODO pass it in some other way
+
 	private float roomWidth = Room.roomWidth;
 	private float roomHeight = Room.roomHeight;
 
