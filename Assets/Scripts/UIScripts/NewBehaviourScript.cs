@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Game : MonoBehaviour {
+public class NewBehaviourScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -10,15 +10,6 @@ public class Game : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-			
+	
 	}
-
-	public void SinnerLeaveRoom(Sinner sinner, Room origin) {
-		//origin.SinnerLeaveRoom (sinner);
-	}
-
-	void OnGUI() {
-
-	}
-
 }

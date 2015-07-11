@@ -5,7 +5,12 @@ public class NewPunishmentRoomButton : MonoBehaviour {
 
 	public GameObject punishmentRoomPrefab;
 	private GameObject newRoom;
-	public Vector2 gridSize = new Vector2 (142, 70);
+	public UIShowHide doh;
+	private BoardManager boardManager;
+
+	public void setBoardManager(BoardManager boardManager) {
+		this.boardManager = boardManager;
+	}
 
 	void Start() {
 		CanvasRenderer renderer = GetComponent<CanvasRenderer> () as CanvasRenderer;
@@ -17,18 +22,23 @@ public class NewPunishmentRoomButton : MonoBehaviour {
 	}
 
 	public void OnGUI() {
-		if (newRoom != null) {
+		if (newRoom != null){
 			Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			int gridPositionX = Mathf.RoundToInt (mouseWorldPosition.x / gridSize.x);
-			int gridPositionY = Mathf.RoundToInt(mouseWorldPosition.y / gridSize.y);
-			Vector2 worldPosition = new Vector2(gridSize.x * gridPositionX, gridSize.y * gridPositionY);
-			print ("Mouse Position: " + Input.mousePosition);
-			print ("Mouse World Position: " + mouseWorldPosition);
-			print ("Grid Position: " + gridPositionX + ", " + gridPositionY);
-			print ("World Position: " + worldPosition);
-			newRoom.transform.position =  worldPosition;
-			if (Input.GetButtonDown("Fire1")) {
-				newRoom = null;
+			BoardManager.RoomIndex gridIndex = boardManager.WorldSnapToGrid(mouseWorldPosition);
+			newRoom.transform.position =  boardManager.GridToWorld2(gridIndex);
+
+			if (!boardManager.IsSlotFree(gridIndex)) {
+				doh.show ();
+			} else {
+				doh.hide ();
+				if (Input.GetButtonDown("Fire1")) {
+					boardManager.AddRoomAtIndex(gridIndex, newRoom.GetComponent<Room>());
+					newRoom = null;
+					GameManagerScript gameManagerScript = GameManagerScript.instance;
+					gameManagerScript.RemoveSinPoints(100);
+				} else if (Input.GetButtonDown("Fire2")) {
+					Destroy (newRoom);
+				}
 			}
 		}
 	}
