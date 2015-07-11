@@ -3,7 +3,7 @@ using System.Collections;
 
 public abstract class Room : MonoBehaviour {
 
-	public Room nextRoom;
+	private Room nextRoom;
 	[HideInInspector]
 	public bool reserved = false;
 
@@ -11,6 +11,9 @@ public abstract class Room : MonoBehaviour {
 	public readonly static float roomHeight = 64;
 	public readonly static float sinnerWidth = 18;
 
+	public GameObject pipePrefab;
+	private PipeScript pipe;
+	private BoardManager boardManager;
 
 	public virtual bool HasNextRoom(){
 		return nextRoom != null;
@@ -34,4 +37,36 @@ public abstract class Room : MonoBehaviour {
 			nextRoom.OnSinnerArive(sinner);
 		}
 	}
+
+	public Room NextRoom {
+		get {
+			return this.nextRoom;
+		}
+		set {
+			nextRoom = value;
+			if(nextRoom!=null){
+				if(pipe==null) pipe = (Instantiate(pipePrefab) as GameObject).GetComponent<PipeScript>();
+				pipe.SetPositionAndScale(this.transform, nextRoom.transform);
+			}else if (pipe!=null){
+				Destroy(pipe);
+			}
+		}
+	}
+
+	BoardManager BoardManager {
+		get {
+			return this.boardManager;
+		}
+		set {
+			boardManager = value;
+		}
+	}
+
+	public void NextRoomButtonClick(){
+		if (boardManager == null)
+			return;
+
+
+	}
+
 }

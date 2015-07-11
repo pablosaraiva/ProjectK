@@ -68,7 +68,7 @@ public class BoardManager : MonoBehaviour {
 		firstWaitRoomInstance = (Instantiate (waitingRoomPrefab, Vector3.zero, Quaternion.identity)as GameObject).GetComponent<WaitingRoom>();
 		AddRoomAtIndexAndSetPosition(new RoomIndex(-2, 0), firstWaitRoomInstance);
 
-		firstWaitRoomInstance.nextRoom = deskRoomInstance;
+		firstWaitRoomInstance.NextRoom = deskRoomInstance;
 
 
 		CreateInitialRooms ();
@@ -83,7 +83,7 @@ public class BoardManager : MonoBehaviour {
 
 	private void CreateInitialRooms(){
 		Room exitRoom = AddRoomAtIndexAndSetPosition (new RoomIndex (1, 0), (Instantiate (exitRoomPrefab) as GameObject).GetComponent<Room> ());
-		AddRoomAtIndexAndSetPosition (new RoomIndex (0, 0), (Instantiate (punishmentRoomPrefabs[0]) as GameObject).GetComponent<Room> ()).nextRoom = exitRoom;
+		AddRoomAtIndexAndSetPosition (new RoomIndex (0, 0), (Instantiate (punishmentRoomPrefabs[0]) as GameObject).GetComponent<Room> ()).NextRoom = exitRoom;
 
 	}
 
@@ -133,6 +133,10 @@ public class BoardManager : MonoBehaviour {
 
 	public RoomIndex WorldSnapToGrid(Vector2 worldPos){
 		return new RoomIndex (Mathf.RoundToInt((worldPos.x/(roomWidth + distanceInterRoomsWidth))),Mathf.RoundToInt( (worldPos.y)/(roomHeight + distanceInterRoomsHeight)));
+	}
+
+	public List<Room> AdjacentRooms(Room room){
+		return null;
 	}
 	
 }
