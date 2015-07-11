@@ -27,16 +27,39 @@ public class GameManagerScript : MonoBehaviour {
 		boardScript.StetupScene ();
 		GameObject HudManager = Instantiate (gameHUD);
 		HudManager.transform.Find ("NewPunishmentRoomButton").GetComponent<NewPunishmentRoomButton> ().setBoardManager(boardScript);
+
+		int loadGame = PlayerPrefs.GetInt ("LoadGame");
+		if (loadGame == 1) {
+			LoadGame();
+		}
+
+		UpdateHUD ();
 	}
 
 	public void AddSinPoints(int sinPoints) {	
 		this.sinPoints += sinPoints;
-		GameHUDScript gameHUDScript = gameHUD.GetComponent<GameHUDScript>();
-		gameHUDScript.SetSinPoints (this.sinPoints);
+
+		UpdateHUD ();
+
+		GameData gameData = new GameData ();
+		gameData.sinPoints = this.sinPoints;
+		SaveLoad.Save (gameData);
 	}
 
 	public void RemoveSinPoints(int sinPoints) {
 		AddSinPoints (-sinPoints);
 	}
+
+	public void LoadGame() {
+		GameData gameData = SaveLoad.Load ();
+		this.sinPoints = gameData.sinPoints;
+	}
+
+	private void UpdateHUD()
+	{
+		GameHUDScript gameHUDScript = gameHUD.GetComponent<GameHUDScript>();
+		gameHUDScript.SetSinPoints (this.sinPoints);
+	}
+
 	                                         
 }
