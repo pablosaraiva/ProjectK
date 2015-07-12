@@ -115,6 +115,8 @@ public class BoardManager : MonoBehaviour {
 			deskRoomInstance.AddToFirstRoomsList(roomsDict[ri]);
 		}
 		room.transform.SetParent (roomsHolder);
+		room.BoardManager = this;
+		room.RoomIndex = ri;
 		return room;
 	}
 
@@ -136,7 +138,13 @@ public class BoardManager : MonoBehaviour {
 	}
 
 	public List<Room> AdjacentRooms(Room room){
-		return null;
+		List<Room> adjRooms = new List<Room>();
+		foreach (RoomIndex ri in roomsDict.Keys) {
+			if(ri!=room.RoomIndex && (Math.Abs(ri.x - room.RoomIndex.y)<2 && Math.Abs(ri.y - room.RoomIndex.y)<2) ){
+				adjRooms.Add(roomsDict[ri]);
+			}
+		}
+		return adjRooms;
 	}
 	
 }

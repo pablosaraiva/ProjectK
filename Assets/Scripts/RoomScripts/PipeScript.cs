@@ -20,6 +20,7 @@ public class PipeScript : MonoBehaviour {
 
 	//TODO link on a better way, for no total overlapsing
 	public void SetPositionAndScale(Transform roomFrom, Transform roomTo){
+		Debug.Log (roomTo.position);
 		transform.position = (roomTo.position - roomFrom.position) / 2F;
 		transform.rotation = Quaternion.FromToRotation(roomFrom.position, roomTo.position);
 		transform.localScale.Set(Vector3.Distance(roomFrom.position, roomTo.position), 1, 1);

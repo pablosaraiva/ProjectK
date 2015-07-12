@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public abstract class Room : MonoBehaviour {
 
@@ -14,6 +15,7 @@ public abstract class Room : MonoBehaviour {
 	public GameObject pipePrefab;
 	private PipeScript pipe;
 	private BoardManager boardManager;
+	private BoardManager.RoomIndex roomIndex;
 
 	public virtual bool HasNextRoom(){
 		return nextRoom != null;
@@ -53,7 +55,7 @@ public abstract class Room : MonoBehaviour {
 		}
 	}
 
-	BoardManager BoardManager {
+	public BoardManager BoardManager {
 		get {
 			return this.boardManager;
 		}
@@ -62,10 +64,23 @@ public abstract class Room : MonoBehaviour {
 		}
 	}
 
+	public BoardManager.RoomIndex RoomIndex {
+		get {
+			return this.roomIndex;
+		}
+		set {
+			roomIndex = value;
+		}
+	}
+
+
 	public void NextRoomButtonClick(){
 		if (boardManager == null)
 			return;
 
+		List<Room> adjRooms = boardManager.AdjacentRooms (this);
+
+		//TODO create botton that links
 
 	}
 

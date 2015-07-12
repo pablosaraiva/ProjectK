@@ -126,8 +126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50b09cc173390a74287156e828a286a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextRoom: {fileID: 0}
   reserved: 0
+  pipePrefab: {fileID: 192704, guid: 588d61df08409654ebe9502acf18bc87, type: 2}
   GoFirstRoomGUIPrefab: {fileID: 113516, guid: 0ba8a6dd228d27441aadb5d5a0f492e4, type: 2}
 --- !u!212 &21200724
 SpriteRenderer:

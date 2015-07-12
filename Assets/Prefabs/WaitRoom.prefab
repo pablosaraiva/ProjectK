@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92f52468b7f72764d905cdc1246e1d63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextRoom: {fileID: 0}
   reserved: 0
+  pipePrefab: {fileID: 192704, guid: 588d61df08409654ebe9502acf18bc87, type: 2}
 --- !u!212 &21285142
 SpriteRenderer:
   m_ObjectHideFlags: 1
