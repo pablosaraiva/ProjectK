@@ -50,6 +50,7 @@ public abstract class Room : MonoBehaviour {
 				if(pipe==null) pipe = (Instantiate(pipePrefab) as GameObject).GetComponent<PipeScript>();
 				pipe.SetPositionAndScale(this.transform, nextRoom.transform);
 			}else if (pipe!=null){
+				pipe.SetHighLight(false);
 				Destroy(pipe.gameObject);
 			}
 		}
@@ -62,24 +63,6 @@ public abstract class Room : MonoBehaviour {
 		set {
 			boardManager = value;
 		}
-	}
-
-	public List<GameObject> NextRoomButtonClick(GameObject linkPrefab){
-		if (boardManager == null)
-			return null;
-
-		List<GameObject> buttonsList = new List<GameObject> ();
-		foreach (Room adjRoom in boardManager.AdjacentRooms (this)) {
-			GameObject link = Instantiate(linkPrefab, adjRoom.transform.position, Quaternion.identity) as GameObject;
-			Room capturedRoom = adjRoom;
-			Room thisCapturedRoom = this;
-			link.transform.GetComponentInChildren<Button>().onClick.AddListener(() => {
-
-				thisCapturedRoom.NextRoom = capturedRoom;
-			});
-			buttonsList.Add(link);
-		}
-		return buttonsList;
 	}
 
 	public void HightLightPipes(bool highlight){
