@@ -23,11 +23,11 @@ public class WaitingRoom : Room {
 	}
 
 	void TrySendToNextRoom(){
-		if (sinnersList.Count > 0 && HasNextRoom () && nextRoom.CanSinnerArrive ()) {
+		if (sinnersList.Count > 0 && HasNextRoom () && this.NextRoom.CanSinnerArrive ()) {
 			Sinner sinnerToMove = sinnersList [0];
 			sinnersList.Remove(sinnerToMove);
 			sinnerToMove.MoveToTarget(this.transform.position + new Vector3(roomWidth/2 + sinnerWidth/2, 0, 0), WalkOutsideCallBack);
-			nextRoom.ReserveSinnerPlace();
+			this.NextRoom.ReserveSinnerPlace();
 			RearangeSinnersPosition();
 		}
 	}

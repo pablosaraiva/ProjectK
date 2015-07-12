@@ -11,7 +11,7 @@ public class ExitRoom : Room {
 			timeCounter += Time.deltaTime;
 			
 			if(timeCounter>=2 && HasNextRoom()){
-				nextRoom.OnSinnerArive(sinner);
+				NextRoom.OnSinnerArive(sinner);
 				sinner = null;
 			}
 		}

@@ -24,10 +24,10 @@ public class PunishmentRoom : Room {
 	void Update () {
 		if (sinner != null) {
 			timeCounter += Time.deltaTime;
-			
-			if(timeCounter>=2 && HasNextRoom() && nextRoom.CanSinnerArrive()){
+
+			if(timeCounter>=2 && HasNextRoom() && this.NextRoom.CanSinnerArrive()){
 				Punish();
-				nextRoom.OnSinnerArive(sinner);
+				this.NextRoom.OnSinnerArive(sinner);
 				timeCounter = 0;
 				sinner = null;
 			}
