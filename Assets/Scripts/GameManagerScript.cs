@@ -8,7 +8,7 @@ public class GameManagerScript : MonoBehaviour {
 
 	public BoardManager boardScript;
 	public GameObject gameHUD;
-	private int sinPoints = 0;
+	private GameData gameData;
 
 	// Use this for initialization
 	void Awake () {
@@ -24,6 +24,7 @@ public class GameManagerScript : MonoBehaviour {
 	}
 
 	void InitGame(){
+		gameData = new GameData ();
 		boardScript.StetupScene ();
 		GameObject HudManager = Instantiate (gameHUD);
 		HudManager.transform.Find ("NewPunishmentRoomButton").GetComponent<NewPunishmentRoomButton> ().setBoardManager(boardScript);
@@ -37,12 +38,10 @@ public class GameManagerScript : MonoBehaviour {
 	}
 
 	public void AddSinPoints(int sinPoints) {	
-		this.sinPoints += sinPoints;
+		gameData.sinPoints += sinPoints;
 
 		UpdateHUD ();
 
-		GameData gameData = new GameData ();
-		gameData.sinPoints = this.sinPoints;
 		SaveLoad.Save (gameData);
 	}
 
@@ -51,14 +50,13 @@ public class GameManagerScript : MonoBehaviour {
 	}
 
 	public void LoadGame() {
-		GameData gameData = SaveLoad.Load ();
-		this.sinPoints = gameData.sinPoints;
+		gameData = SaveLoad.Load ();
 	}
 
 	private void UpdateHUD()
 	{
 		GameHUDScript gameHUDScript = gameHUD.GetComponent<GameHUDScript>();
-		gameHUDScript.SetSinPoints (this.sinPoints);
+		gameHUDScript.SetSinPoints (gameData.sinPoints);
 	}
 
 	                                         
