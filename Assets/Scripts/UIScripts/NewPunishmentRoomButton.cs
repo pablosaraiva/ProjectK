@@ -24,7 +24,7 @@ public class NewPunishmentRoomButton : MonoBehaviour {
 	public void OnGUI() {
 		if (newRoom != null){
 			Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			BoardManager.RoomIndex gridIndex = boardManager.WorldSnapToGrid(mouseWorldPosition);
+			RoomIndex gridIndex = boardManager.WorldSnapToGrid(mouseWorldPosition);
 			newRoom.transform.position =  boardManager.GridToWorld2(gridIndex);
 
 			if (!boardManager.IsSlotFree(gridIndex)) {

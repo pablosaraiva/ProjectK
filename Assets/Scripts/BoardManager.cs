@@ -28,28 +28,7 @@ public class BoardManager : MonoBehaviour {
 	private Transform roomsHolder;
 	private Transform sinnersHolder;
 
-	private Dictionary<RoomIndex, Room> roomsDict = new Dictionary<RoomIndex, Room>();
-
-	public class RoomIndex{
-		public int x;
-		public int y;
-		public RoomIndex(int x, int y){
-			this.x = x;
-			this.y = y;
-		}
-
-		public override bool Equals (object obj)
-		{
-			RoomIndex ri = (RoomIndex)obj;
-			return (ri.x == this.x && ri.y == this.y);
-		}
-		//TODO Dont know if this hash is optimal
-		public override int GetHashCode ()
-		{
-			return x * 10000 + y;
-		}
-
-	}
+	public Dictionary<RoomIndex, Room> roomsDict = new Dictionary<RoomIndex, Room>();
 
 	public void StetupScene(){
 
@@ -70,7 +49,6 @@ public class BoardManager : MonoBehaviour {
 
 		firstWaitRoomInstance.nextRoom = deskRoomInstance;
 
-
 		CreateInitialRooms ();
 
 		foreach (RoomIndex ri in roomsDict.Keys) {
@@ -81,10 +59,10 @@ public class BoardManager : MonoBehaviour {
 
 	}
 
-	private void CreateInitialRooms(){
+	private void CreateInitialRooms()
+	{
 		Room exitRoom = AddRoomAtIndexAndSetPosition (new RoomIndex (1, 0), (Instantiate (exitRoomPrefab) as GameObject).GetComponent<Room> ());
 		AddRoomAtIndexAndSetPosition (new RoomIndex (0, 0), (Instantiate (punishmentRoomPrefabs[0]) as GameObject).GetComponent<Room> ()).nextRoom = exitRoom;
-
 	}
 
 	void Start(){
@@ -111,6 +89,7 @@ public class BoardManager : MonoBehaviour {
 
 	public Room AddRoomAtIndex(RoomIndex ri, Room room){
 		roomsDict.Add (ri, room);
+		room.roomIndex = ri;
 		if (ri.x == 0) {
 			deskRoomInstance.AddToFirstRoomsList(roomsDict[ri]);
 		}
@@ -120,8 +99,13 @@ public class BoardManager : MonoBehaviour {
 
 	public Room AddRoomAtIndexAndSetPosition(RoomIndex ri, Room room){
 		AddRoomAtIndex (ri, room);
-		room.transform.position = GridToWorld3 (ri);
+		SetRoomPosition (ri, room);
 		return room;
+	}
+
+	private void SetRoomPosition(RoomIndex ri, Room room)
+	{
+		room.transform.position = GridToWorld3 (ri);
 	}
 
 	public Vector2 GridToWorld2(RoomIndex ri){
@@ -134,5 +118,5 @@ public class BoardManager : MonoBehaviour {
 	public RoomIndex WorldSnapToGrid(Vector2 worldPos){
 		return new RoomIndex (Mathf.RoundToInt((worldPos.x/(roomWidth + distanceInterRoomsWidth))),Mathf.RoundToInt( (worldPos.y)/(roomHeight + distanceInterRoomsHeight)));
 	}
-	
+
 }
