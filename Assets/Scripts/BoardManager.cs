@@ -62,7 +62,7 @@ public class BoardManager : MonoBehaviour {
 	private void CreateInitialRooms()
 	{
 		Room exitRoom = AddRoomAtIndexAndSetPosition (new RoomIndex (1, 0), (Instantiate (exitRoomPrefab) as GameObject).GetComponent<Room> ());
-		AddRoomAtIndexAndSetPosition (new RoomIndex (0, 0), (Instantiate (punishmentRoomPrefabs[0]) as GameObject).GetComponent<Room> ()).nextRoom = exitRoom;
+		AddRoomAtIndexAndSetPosition (new RoomIndex (0, 0), (Instantiate (punishmentRoomPrefabs[0]) as GameObject).GetComponent<Room> ()).NextRoom = exitRoom;
 	}
 
 	void Start(){
@@ -95,7 +95,7 @@ public class BoardManager : MonoBehaviour {
 		}
 		room.transform.SetParent (roomsHolder);
 		room.BoardManager = this;
-		room.RoomIndex = ri;
+		room.roomIndex = ri;
 		return room;
 	}
 
@@ -124,7 +124,7 @@ public class BoardManager : MonoBehaviour {
 	public List<Room> AdjacentRooms(Room room){
 		List<Room> adjRooms = new List<Room>();
 		foreach (RoomIndex ri in roomsDict.Keys) {
-			if(ri!=room.RoomIndex && (Math.Abs(ri.x - room.RoomIndex.x)<2 && Math.Abs(ri.y - room.RoomIndex.y)<2) ){
+			if(ri!=room.roomIndex && (Math.Abs(ri.x - room.roomIndex.x)<2 && Math.Abs(ri.y - room.roomIndex.y)<2) ){
 				adjRooms.Add(roomsDict[ri]);
 			}
 		}
