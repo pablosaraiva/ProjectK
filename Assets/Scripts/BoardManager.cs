@@ -47,7 +47,7 @@ public class BoardManager : MonoBehaviour {
 		firstWaitRoomInstance = (Instantiate (waitingRoomPrefab, Vector3.zero, Quaternion.identity)as GameObject).GetComponent<WaitingRoom>();
 		AddRoomAtIndexAndSetPosition(new RoomIndex(-2, 0), firstWaitRoomInstance);
 
-		firstWaitRoomInstance.nextRoom = deskRoomInstance;
+		firstWaitRoomInstance.NextRoom = deskRoomInstance;
 
 		CreateInitialRooms ();
 
@@ -94,6 +94,8 @@ public class BoardManager : MonoBehaviour {
 			deskRoomInstance.AddToFirstRoomsList(roomsDict[ri]);
 		}
 		room.transform.SetParent (roomsHolder);
+		room.BoardManager = this;
+		room.RoomIndex = ri;
 		return room;
 	}
 
@@ -119,4 +121,13 @@ public class BoardManager : MonoBehaviour {
 		return new RoomIndex (Mathf.RoundToInt((worldPos.x/(roomWidth + distanceInterRoomsWidth))),Mathf.RoundToInt( (worldPos.y)/(roomHeight + distanceInterRoomsHeight)));
 	}
 
+	public List<Room> AdjacentRooms(Room room){
+		List<Room> adjRooms = new List<Room>();
+		foreach (RoomIndex ri in roomsDict.Keys) {
+			if(ri!=room.RoomIndex && (Math.Abs(ri.x - room.RoomIndex.x)<2 && Math.Abs(ri.y - room.RoomIndex.y)<2) ){
+				adjRooms.Add(roomsDict[ri]);
+			}
+		}
+		return adjRooms;
+	}
 }

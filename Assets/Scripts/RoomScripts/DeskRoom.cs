@@ -48,7 +48,7 @@ public class DeskRoom : Room {
 			Room capturedRoom = r;
 			gUICanvasMoveToFirstRoom.transform.Find("MoveButton").gameObject.GetComponent<Button>().onClick.AddListener(() => {
 				if(capturedRoom.CanSinnerArrive()){
-					nextRoom = capturedRoom;
+					this.NextRoom = capturedRoom;
 					sinner.MoveToTarget (this.transform.position + new Vector3 (roomWidth / 2 + sinnerWidth / 2, 0, 0), WalkOutsideCallBack);
 					Destroy(guiHolder);
 					Invoke("FreeRoomForNextSinner", 0.8F);
@@ -89,7 +89,7 @@ public class DeskRoom : Room {
 	public override void WalkOutsideCallBack (Sinner sinner)
 	{
 		base.WalkOutsideCallBack (sinner);
-		this.nextRoom = null;
+		this.NextRoom = null;
 
 	}
 

@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public abstract class Room : MonoBehaviour {
 
-	public Room nextRoom;
+	private Room nextRoom;
 	[HideInInspector]
 	public bool reserved = false;
 
@@ -11,6 +13,9 @@ public abstract class Room : MonoBehaviour {
 	public readonly static float roomHeight = 64;
 	public readonly static float sinnerWidth = 18;
 	public RoomIndex roomIndex { get; set; }
+	public GameObject pipePrefab;
+	private PipeScript pipe;
+	private BoardManager boardManager;
 
 	public virtual bool HasNextRoom(){
 		return nextRoom != null;
@@ -34,4 +39,54 @@ public abstract class Room : MonoBehaviour {
 			nextRoom.OnSinnerArive(sinner);
 		}
 	}
+
+	public Room NextRoom {
+		get {
+			return this.nextRoom;
+		}
+		set {
+			nextRoom = value;
+			if(nextRoom!=null){
+				if(pipe==null) pipe = (Instantiate(pipePrefab) as GameObject).GetComponent<PipeScript>();
+				pipe.SetPositionAndScale(this.transform, nextRoom.transform);
+			}else if (pipe!=null){
+				Destroy(pipe.gameObject);
+			}
+		}
+	}
+
+	public BoardManager BoardManager {
+		get {
+			return this.boardManager;
+		}
+		set {
+			boardManager = value;
+		}
+	}
+
+	public List<GameObject> NextRoomButtonClick(GameObject linkPrefab){
+		if (boardManager == null)
+			return null;
+
+		List<GameObject> buttonsList = new List<GameObject> ();
+		foreach (Room adjRoom in boardManager.AdjacentRooms (this)) {
+			GameObject link = Instantiate(linkPrefab, adjRoom.transform.position, Quaternion.identity) as GameObject;
+			Room capturedRoom = adjRoom;
+			Room thisCapturedRoom = this;
+			link.transform.GetComponentInChildren<Button>().onClick.AddListener(() => {
+
+				thisCapturedRoom.NextRoom = capturedRoom;
+			});
+			buttonsList.Add(link);
+		}
+		return buttonsList;
+	}
+
+	public void HightLightPipes(bool highlight){
+		if(pipe!= null)
+			pipe.SetHighLight (highlight);
+		if (nextRoom != null)
+			nextRoom.HightLightPipes (highlight);
+	}
+
 }
