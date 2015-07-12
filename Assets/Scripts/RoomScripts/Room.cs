@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -50,7 +51,7 @@ public abstract class Room : MonoBehaviour {
 				if(pipe==null) pipe = (Instantiate(pipePrefab) as GameObject).GetComponent<PipeScript>();
 				pipe.SetPositionAndScale(this.transform, nextRoom.transform);
 			}else if (pipe!=null){
-				Destroy(pipe);
+				Destroy(pipe.gameObject);
 			}
 		}
 	}
@@ -74,14 +75,29 @@ public abstract class Room : MonoBehaviour {
 	}
 
 
-	public void NextRoomButtonClick(){
+	public List<GameObject> NextRoomButtonClick(GameObject linkPrefab){
 		if (boardManager == null)
-			return;
+			return null;
 
-		List<Room> adjRooms = boardManager.AdjacentRooms (this);
+		List<GameObject> buttonsList = new List<GameObject> ();
+		foreach (Room adjRoom in boardManager.AdjacentRooms (this)) {
+			GameObject link = Instantiate(linkPrefab, adjRoom.transform.position, Quaternion.identity) as GameObject;
+			Room capturedRoom = adjRoom;
+			Room thisCapturedRoom = this;
+			link.transform.GetComponentInChildren<Button>().onClick.AddListener(() => {
 
-		//TODO create botton that links
+				thisCapturedRoom.NextRoom = capturedRoom;
+			});
+			buttonsList.Add(link);
+		}
+		return buttonsList;
+	}
 
+	public void HightLightPipes(bool highlight){
+		if(pipe!= null)
+			pipe.SetHighLight (highlight);
+		if (nextRoom != null)
+			nextRoom.HightLightPipes (highlight);
 	}
 
 }

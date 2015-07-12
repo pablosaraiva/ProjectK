@@ -140,7 +140,7 @@ public class BoardManager : MonoBehaviour {
 	public List<Room> AdjacentRooms(Room room){
 		List<Room> adjRooms = new List<Room>();
 		foreach (RoomIndex ri in roomsDict.Keys) {
-			if(ri!=room.RoomIndex && (Math.Abs(ri.x - room.RoomIndex.y)<2 && Math.Abs(ri.y - room.RoomIndex.y)<2) ){
+			if(ri!=room.RoomIndex && (Math.Abs(ri.x - room.RoomIndex.x)<2 && Math.Abs(ri.y - room.RoomIndex.y)<2) ){
 				adjRooms.Add(roomsDict[ri]);
 			}
 		}

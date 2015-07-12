@@ -11,18 +11,25 @@ public class PipeScript : MonoBehaviour {
 	public void SetHighLight(bool highlight){
 		Color c = pipeRenderer.color;
 		if (highlight) {
-			c.a = 255;
+			c.a = 1;
 		} else {
-			c.a = 45;
+			c.a = 45F/255F;
 		}
 		pipeRenderer.color = c;
 	}
 
 	//TODO link on a better way, for no total overlapsing
 	public void SetPositionAndScale(Transform roomFrom, Transform roomTo){
-		Debug.Log (roomTo.position);
-		transform.position = (roomTo.position - roomFrom.position) / 2F;
-		transform.rotation = Quaternion.FromToRotation(roomFrom.position, roomTo.position);
-		transform.localScale.Set(Vector3.Distance(roomFrom.position, roomTo.position), 1, 1);
+		Vector3 enterPoint = roomFrom.position + new Vector3 (Room.roomWidth / 2F, Room.roomHeight / 2F, 0);
+		Vector3 exitPoint = roomTo.position + new Vector3 (- Room.roomWidth / 2F, Room.roomHeight / 2F, 0);
+		//Debug.Log (roomTo.position);
+		transform.position = ((exitPoint + enterPoint) / 2F);
+		transform.rotation = Quaternion.identity;
+		//print (enterPoint + "  " + exitPoint + "  " + Vector3.Angle(new Vector3(1,0,0), exitPoint - enterPoint));
+		float angle = Vector3.Angle (new Vector3 (1, 0, 0), exitPoint - enterPoint);
+		if (Vector3.Cross (enterPoint, exitPoint).z > 0)
+			angle = 360 - angle;
+		transform.Rotate (new Vector3 (0,0,angle));
+		transform.localScale = new Vector3 (Vector3.Distance(enterPoint, exitPoint), 1, 1);
 	}
 }
