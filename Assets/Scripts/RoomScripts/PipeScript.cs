@@ -27,7 +27,7 @@ public class PipeScript : MonoBehaviour {
 		transform.rotation = Quaternion.identity;
 		//print (enterPoint + "  " + exitPoint + "  " + Vector3.Angle(new Vector3(1,0,0), exitPoint - enterPoint));
 		float angle = Vector3.Angle (new Vector3 (1, 0, 0), exitPoint - enterPoint);
-		if (Vector3.Cross (enterPoint, exitPoint).z > 0)
+		if (Vector3.Cross (new Vector3(1, 0, 0), exitPoint - enterPoint).z < 0)
 			angle = 360 - angle;
 		transform.Rotate (new Vector3 (0,0,angle));
 		transform.localScale = new Vector3 (Vector3.Distance(enterPoint, exitPoint), 1, 1);
