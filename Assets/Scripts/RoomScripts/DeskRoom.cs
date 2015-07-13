@@ -32,7 +32,7 @@ public class DeskRoom : Room {
 	{
 		reserved = false;
 		this.sinner = sinner;
-		//TODO fix entry position
+
 		Vector3 startPos = new Vector3 (this.transform.position.x - (roomWidth/2 + sinnerWidth/2), this.transform.position.y, 0);
 		sinner.transform.position = startPos;
 		sinner.MoveToTarget(this.transform.position, ShowGUIOfFirstRooms);

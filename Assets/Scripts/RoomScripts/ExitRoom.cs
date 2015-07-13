@@ -5,16 +5,9 @@ public class ExitRoom : Room {
 
 	Sinner sinner;
 
-	private float timeCounter = 0;
+
 	void Update () {
-		if (sinner != null) {
-			timeCounter += Time.deltaTime;
-			
-			if(timeCounter>=2 && HasNextRoom()){
-				NextRoom.OnSinnerArive(sinner);
-				sinner = null;
-			}
-		}
+
 	}
 
 	public override bool HasNextRoom ()
@@ -36,7 +29,27 @@ public class ExitRoom : Room {
 	{
 		reserved = false;
 		this.sinner = sinner;
-		//TODO fix entry position
-		sinner.transform.position = transform.position;
+
+		Vector3 startPos = new Vector3 (this.transform.position.x - (roomWidth/2 + sinnerWidth/2), this.transform.position.y, 0);
+		sinner.transform.position = startPos;
+		sinner.MoveToTarget(this.transform.position, SinnerArriveOnMiddleOfRoom);
+	}
+
+	public void SinnerArriveOnMiddleOfRoom(Sinner sinner){
+		Animator animator = sinner.transform.Find("RenderObject").GetComponent<Animator> ();
+
+		animator.SetTrigger ("gone");
+
+		StartCoroutine (GoneAnimationController(animator));
+	}
+
+	private IEnumerator GoneAnimationController(Animator animator){
+		while (!animator.GetCurrentAnimatorStateInfo (0).IsName("Done")) {
+			yield return null;
+		}
+		Destroy (sinner.gameObject);
+		reserved = false;
+		sinner = null;
+		yield return null;
 	}
 }
