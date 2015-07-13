@@ -279,6 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c6216f8a81b902498384c39de435547, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  linkPrefab: {fileID: 161378, guid: d51d96e33f89b0f40a321bb233271d15, type: 2}
 --- !u!114 &11460754
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -683,6 +684,10 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_BoolArgument
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: linkPrefab
+      value: 
+      objectReference: {fileID: 161378, guid: d51d96e33f89b0f40a321bb233271d15, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 142232}
