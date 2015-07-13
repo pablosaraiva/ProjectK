@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boardScript: {fileID: 0}
-  GAMEHudPrefab: {fileID: 103020, guid: 0c0177eed8184c044b209c4b9cd01927, type: 2}
+  gameHUD: {fileID: 103020, guid: 0c0177eed8184c044b209c4b9cd01927, type: 2}
 --- !u!114 &11440958
 MonoBehaviour:
   m_ObjectHideFlags: 1
