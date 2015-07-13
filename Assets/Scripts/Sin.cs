@@ -40,7 +40,7 @@ public class Sin {
 			this.amount = 0;
 			return toReturn;
 		} else {
-			int toReturn = amount - amountToReduce;
+			int toReturn = amountToReduce;
 			amount -= amountToReduce;
 			return toReturn;
 		}

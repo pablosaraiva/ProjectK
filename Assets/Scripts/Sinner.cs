@@ -48,7 +48,7 @@ public class Sinner : MonoBehaviour {
 		}
 	}
 
-	int PointsOfPunishment {
+	public int PointsOfPunishment {
 		get {
 			return this.pointsOfPunishment;
 		}

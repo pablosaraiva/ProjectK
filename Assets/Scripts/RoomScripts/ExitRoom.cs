@@ -41,6 +41,7 @@ public class ExitRoom : Room {
 		animator.SetTrigger ("gone");
 
 		StartCoroutine (GoneAnimationController(animator));
+		GameManagerScript.instance.AddSinPoints (sinner.PointsOfPunishment);
 	}
 
 	private IEnumerator GoneAnimationController(Animator animator){
@@ -48,8 +49,8 @@ public class ExitRoom : Room {
 			yield return null;
 		}
 		Destroy (sinner.gameObject);
-		reserved = false;
-		sinner = null;
+		this.reserved = false;
+		this.sinner = null;
 		yield return null;
 	}
 }

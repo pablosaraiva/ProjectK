@@ -19,21 +19,7 @@ public class PunishmentRoom : Room {
 	
 
 	private Sinner sinner;
-
-	private float timeCounter = 0;
-	void Update () {
-		if (sinner != null) {
-			timeCounter += Time.deltaTime;
-
-			if(timeCounter>=2 && HasNextRoom() && this.NextRoom.CanSinnerArrive()){
-				Punish();
-				this.NextRoom.OnSinnerArive(sinner);
-				timeCounter = 0;
-				sinner = null;
-			}
-		}
-	}
-
+	
 	public virtual void Punish(){
 		foreach(SinEntry se in punishments){
 			foreach(Sin sin in sinner.Sins){
@@ -58,7 +44,31 @@ public class PunishmentRoom : Room {
 	{
 		reserved = false;
 		this.sinner = sinner;
-		//TODO fix entry position
-		sinner.transform.position = transform.position;
+		
+		Vector3 startPos = new Vector3 (this.transform.position.x - (roomWidth/2 + sinnerWidth/2), this.transform.position.y, 0);
+		sinner.transform.position = startPos;
+		sinner.MoveToTarget(this.transform.position, SinnerArriveOnMiddleOfRoom);
+	}
+
+	public void SinnerArriveOnMiddleOfRoom(Sinner sinner){
+		//TODO wait a little, or implements new animation.
+		Punish ();
+
+		StartCoroutine (TryToSendNextRoom());
+	}
+
+	public IEnumerator TryToSendNextRoom(){
+		while (!HasNextRoom() || !NextRoom.CanSinnerArrive()) {
+			yield return null;
+		}
+		NextRoom.ReserveSinnerPlace ();
+		sinner.MoveToTarget(this.transform.position + new Vector3(roomWidth/2 + sinnerWidth/2, 0, 0), WalkOutsideCallBack);
+	}
+
+	public override void WalkOutsideCallBack (Sinner sinner)
+	{
+		base.WalkOutsideCallBack (sinner);
+		this.sinner = null;
+		this.reserved = false;
 	}
 }
