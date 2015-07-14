@@ -49,8 +49,34 @@ public class GameManagerScript : MonoBehaviour {
 
 	private void LoadGame() {
 		gameData = SaveLoad.Load ();
+
+		// We have to add all the rooms before start creating the relationships
+
+		// Create rooms
 		foreach (RoomData roomData in gameData.boardData.roomData) {
-			boardScript.AddRoomAtIndexAndSetPosition (roomData.roomIndex, (Instantiate (boardScript.punishmentRoomPrefabs [0]) as GameObject).GetComponent<Room> ());
+			if (roomData != null)
+			{
+				boardScript.AddRoomAtIndexAndSetPosition (roomData.roomIndex, (Instantiate (boardScript.punishmentRoomPrefabs [0]) as GameObject).GetComponent<Room> ());
+			}
+		}
+
+		// Add relationshipts
+		foreach (RoomData roomData in gameData.boardData.roomData) {
+			if (roomData != null)
+			{
+				Room room;
+				if (boardScript.roomsDict.TryGetValue(roomData.roomIndex, out room))
+				{
+					if (roomData.nextRoomIndex != null)
+					{
+						Room nextRoom;
+						if (boardScript.roomsDict.TryGetValue(roomData.nextRoomIndex, out nextRoom))
+						{
+							room.NextRoom = nextRoom;
+						}
+					}
+				}
+			}
 		}
 	}
 
@@ -63,6 +89,10 @@ public class GameManagerScript : MonoBehaviour {
 			if (!ShouldIgnore(room.roomIndex)) {
 				RoomData roomData = new RoomData();
 				roomData.roomIndex = room.roomIndex;
+				if (room.HasNextRoom()) {
+					roomData.nextRoomIndex = room.NextRoom.roomIndex;
+				}
+
 				gameData.boardData.roomData[i] = roomData;
 				i++;
 			}
