@@ -50,7 +50,7 @@ public abstract class Room : MonoBehaviour {
 				if(pipe==null) pipe = (Instantiate(pipePrefab) as GameObject).GetComponent<PipeScript>();
 				pipe.SetPositionAndScale(this.transform, nextRoom.transform);
 			}else if (pipe!=null){
-				pipe.SetHighLight(false);
+				pipe.HighLight = false;
 				Destroy(pipe.gameObject);
 			}
 		}
@@ -67,9 +67,12 @@ public abstract class Room : MonoBehaviour {
 
 	public void HightLightPipes(bool highlight){
 		if(pipe!= null)
-			pipe.SetHighLight (highlight);
-		if (nextRoom != null)
+			pipe.HighLight = highlight;
+		if (nextRoom != null) {
+			if (nextRoom.pipe != null && nextRoom.pipe.HighLight == highlight)
+				return;
 			nextRoom.HightLightPipes (highlight);
+		}
 	}
 
 }

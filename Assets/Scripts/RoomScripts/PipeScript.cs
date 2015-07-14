@@ -3,22 +3,31 @@ using System.Collections;
 
 public class PipeScript : MonoBehaviour {
 
+	private bool highlight = false;
+
 	private SpriteRenderer pipeRenderer;
 	void Start(){
 		pipeRenderer = transform.Find ("PipeImage").GetComponent<SpriteRenderer> ();
 	}
 
-	public void SetHighLight(bool highlight){
-		Color c = pipeRenderer.color;
-		if (highlight) {
-			c.a = 1;
-		} else {
-			c.a = 45F/255F;
+	public bool HighLight {
+		get {
+			return this.highlight;
 		}
-		pipeRenderer.color = c;
+		set {
+			highlight = value;
+			Color c = pipeRenderer.color;
+			if (highlight) {
+				c.a = 1;
+			} else {
+				c.a = 45F/255F;
+			}
+			pipeRenderer.color = c;
+		}
 	}
 
 	//TODO link on a better way, for no total overlapsing
+	//TODO Clean this mess
 	public void SetPositionAndScale(Transform roomFrom, Transform roomTo){
 		Vector3 enterPoint = roomFrom.position + new Vector3 (Room.roomWidth / 2F, Room.roomHeight / 2F, 0);
 		Vector3 exitPoint = roomTo.position + new Vector3 (- Room.roomWidth / 2F, Room.roomHeight / 2F, 0);
