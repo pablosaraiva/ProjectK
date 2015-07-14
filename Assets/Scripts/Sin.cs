@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[System.Serializable]
 public class Sin {
+
+	[System.Serializable]
 	public enum Type{
 		Wrath, //Ira
 		Pride, //Orgulho

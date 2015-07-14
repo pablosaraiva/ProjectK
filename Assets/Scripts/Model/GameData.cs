@@ -5,5 +5,4 @@ using System.Collections;
 public class GameData {
 	public int sinPoints;
 	public BoardData boardData = new BoardData();
-
 }

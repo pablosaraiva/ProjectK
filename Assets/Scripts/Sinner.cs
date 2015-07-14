@@ -13,10 +13,11 @@ public class Sinner : MonoBehaviour {
 	private int pointsOfPunishment = 0;
 
 	public void MoveToTarget(Vector3 target, Action<Sinner> onMoveFinishCallback){
-		if(mouvementCoroutine!=null)
+		if (mouvementCoroutine != null) 
+		{
 			StopCoroutine (mouvementCoroutine);
+		}
 		mouvementCoroutine = StartCoroutine(Movement(target, onMoveFinishCallback));
-
 	}
 
 	Coroutine mouvementCoroutine = null;

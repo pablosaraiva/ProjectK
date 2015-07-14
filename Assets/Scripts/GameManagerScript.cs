@@ -54,27 +54,21 @@ public class GameManagerScript : MonoBehaviour {
 		// We have to add all the rooms before start creating the relationships
 
 		// Create rooms
-		foreach (RoomData roomData in gameData.boardData.roomData) {
-			if (roomData != null)
-			{
-				boardScript.AddRoomAtIndexAndSetPosition (roomData.roomIndex, (Instantiate (boardScript.punishmentRoomPrefabs [0]) as GameObject).GetComponent<Room> ());
-			}
+		foreach (RoomData roomData in gameData.boardData.roomDataList) {
+			boardScript.AddRoomAtIndexAndSetPosition (roomData.roomIndex, (Instantiate (boardScript.punishmentRoomPrefabs [0]) as GameObject).GetComponent<Room> ());
 		}
 
 		// Add relationshipts
-		foreach (RoomData roomData in gameData.boardData.roomData) {
-			if (roomData != null)
+		foreach (RoomData roomData in gameData.boardData.roomDataList) {
+			Room room;
+			if (boardScript.roomsDict.TryGetValue(roomData.roomIndex, out room))
 			{
-				Room room;
-				if (boardScript.roomsDict.TryGetValue(roomData.roomIndex, out room))
+				if (roomData.nextRoomIndex != null)
 				{
-					if (roomData.nextRoomIndex != null)
+					Room nextRoom;
+					if (boardScript.roomsDict.TryGetValue(roomData.nextRoomIndex, out nextRoom))
 					{
-						Room nextRoom;
-						if (boardScript.roomsDict.TryGetValue(roomData.nextRoomIndex, out nextRoom))
-						{
-							room.NextRoom = nextRoom;
-						}
+						room.NextRoom = nextRoom;
 					}
 				}
 			}
@@ -83,8 +77,7 @@ public class GameManagerScript : MonoBehaviour {
 
 	private void SaveGame() 
 	{
-		gameData.boardData.roomData = new RoomData[boardScript.roomsDict.Values.Count];
-		int i = 0;
+		gameData.boardData.roomDataList.Clear ();
 		foreach (Room room in boardScript.roomsDict.Values) 
 		{
 			if (!ShouldIgnore(room.roomIndex)) {
@@ -94,8 +87,7 @@ public class GameManagerScript : MonoBehaviour {
 					roomData.nextRoomIndex = room.NextRoom.roomIndex;
 				}
 
-				gameData.boardData.roomData[i] = roomData;
-				i++;
+				gameData.boardData.roomDataList.Add(roomData);
 			}
 		}
 		SaveLoad.Save (gameData);
