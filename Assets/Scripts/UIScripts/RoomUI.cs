@@ -3,29 +3,45 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-public class RoomUI : MonoBehaviour {
-
+public class RoomUI : MonoBehaviour
+{
 
 	public GameObject CanvasRoomPrefab;
-
-
-
 	private Room room;
 
-	public void Start(){
+	public void Start ()
+	{
 		room = transform.GetComponentInParent<Room> ();
 	}
 
-	public void OnClickOnRoom(){
+	public void OnClickRoom ()
+	{
 		GameObject canvasRoom = Instantiate (CanvasRoomPrefab) as GameObject;
 
 		canvasRoom.GetComponent<RoomCanvasUIScript> ().RoomUI = this;
 		canvasRoom.GetComponent<RoomCanvasUIScript> ().Room = room;
 	}
 
+	public void OnClickCloseButton ()
+	{
+		Debug.Log ("Begin OnClickCloseButton");
 
-	public void SetHighLight(bool hightlight){
-		if(room!= null)
+		if (room == null || room.BoardManager == null) {
+			return;
+		}
+
+		Destroy (room.BoardManager.roomsDict [room.roomIndex]);
+
+		room.BoardManager.roomsDict.Remove (room.roomIndex);
+
+		room = null;
+
+		Debug.Log ("End OnClickCloseButton");
+	}
+
+	public void SetHighLight (bool hightlight)
+	{
+		if (room != null)
 			room.HightLightPipes (hightlight);
 	}
 

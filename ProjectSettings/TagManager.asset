@@ -65,3 +65,6 @@ TagManager:
   - name: Guis
     uniqueID: 1791462131
     locked: 0
+  - name: GuiCloseButton
+    uniqueID: 948621457
+    locked: 0
