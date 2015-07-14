@@ -5,7 +5,7 @@ public class GameManagerScript : MonoBehaviour {
 
 	[HideInInspector]
 	public static GameManagerScript instance = null;
-
+	[HideInInspector]
 	public BoardManager boardScript;
 	public GameObject gameHUD;
 	private GameData gameData;
@@ -18,6 +18,7 @@ public class GameManagerScript : MonoBehaviour {
 
 		DontDestroyOnLoad (gameObject);
 		boardScript = GetComponent<BoardManager> ();
+
 		InitGame ();
 	}
 

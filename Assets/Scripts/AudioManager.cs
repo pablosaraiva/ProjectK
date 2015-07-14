@@ -3,13 +3,21 @@ using System.Collections;
 
 public class AudioManager : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
+	[HideInInspector]
+	public static AudioManager instance = null;
+
+	public AudioSource musicAudioSource;
+
+	void Awake () {
+		if (instance == null)
+			instance = this;
+		else if (instance != this)
+			Destroy (gameObject);
+		
+		DontDestroyOnLoad (gameObject);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+
+
+
 }
