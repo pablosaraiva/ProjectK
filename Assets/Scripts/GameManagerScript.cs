@@ -58,7 +58,7 @@ public class GameManagerScript : MonoBehaviour {
 			boardScript.AddRoomAtIndexAndSetPosition (roomData.roomIndex, (Instantiate (boardScript.punishmentRoomPrefabs [0]) as GameObject).GetComponent<Room> ());
 		}
 
-		// Add relationshipts
+		// Add relationships
 		foreach (RoomData roomData in gameData.boardData.roomDataList) {
 			Room room;
 			if (boardScript.roomsDict.TryGetValue(roomData.roomIndex, out room))
