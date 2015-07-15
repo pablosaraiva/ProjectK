@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,14 +27,14 @@ public abstract class Room : MonoBehaviour {
 	public abstract bool CanSetNextRoom();
 
 	//Use to put sinner on array(waiting Room) or save referenca(Punishment Room)
-	public abstract void OnSinnerArive(Sinner sinner);
+	public abstract void OnSinnerArive(SinnerScript sinner);
 
 	//To call before go to room, when you need to walk outside the previous room, to stop other sinners to enter
 	public virtual void ReserveSinnerPlace(){
 		reserved = true;
 	}
 
-	public virtual void WalkOutsideCallBack(Sinner sinner){
+	public virtual void WalkOutsideCallBack(SinnerScript sinner){
 		if (nextRoom != null) {
 			nextRoom.OnSinnerArive(sinner);
 		}

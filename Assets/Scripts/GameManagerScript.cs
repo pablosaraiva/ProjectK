@@ -1,32 +1,36 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class GameManagerScript : MonoBehaviour {
+public class GameManagerScript : MonoBehaviour 
+{
 
 	[HideInInspector]
 	public static GameManagerScript instance = null;
 	[HideInInspector]
-	public BoardManager boardScript;
+	public BoardManager boardManagerScript;
 	public GameObject gameHUD;
 	private GameData gameData;
 
-	void Awake () {
+	void Awake () 
+	{
 		if (instance == null)
 			instance = this;
 		else if (instance != this)
 			Destroy (gameObject);
 
 		DontDestroyOnLoad (gameObject);
-		boardScript = GetComponent<BoardManager> ();
+		boardManagerScript = GetComponent<BoardManager> ();
 
 		InitGame ();
 	}
 
-	void InitGame(){
+	void InitGame()
+	{
 		gameData = new GameData ();
-		boardScript.StetupScene ();
+		boardManagerScript.StetupScene ();
 		GameObject HudManager = Instantiate (gameHUD);
-		HudManager.transform.Find ("NewPunishmentRoomButton").GetComponent<NewPunishmentRoomButton> ().setBoardManager(boardScript);
+		HudManager.transform.Find ("NewPunishmentRoomButton").GetComponent<NewPunishmentRoomButton> ().setBoardManager(boardManagerScript);
 
 
 		int loadGame = PlayerPrefs.GetInt ("LoadGame");
@@ -36,7 +40,8 @@ public class GameManagerScript : MonoBehaviour {
 		UpdateHUD ();
 	}
 
-	public void AddSinPoints(int sinPoints) {	
+	public void AddSinPoints(int sinPoints) 
+	{	
 		gameData.sinPoints += sinPoints;
 
 		UpdateHUD ();
@@ -44,29 +49,42 @@ public class GameManagerScript : MonoBehaviour {
 		SaveGame ();
 	}
 
-	public void RemoveSinPoints(int sinPoints) {
+	public void RemoveSinPoints(int sinPoints) 
+	{
 		AddSinPoints (-sinPoints);
 	}
 
-	private void LoadGame() {
+	private void LoadGame() 
+	{
 		gameData = SaveLoad.Load ();
 
 		// We have to add all the rooms before start creating the relationships
 
 		// Create rooms
 		foreach (RoomData roomData in gameData.boardData.roomDataList) {
-			boardScript.AddRoomAtIndexAndSetPosition (roomData.roomIndex, (Instantiate (boardScript.punishmentRoomPrefabs [0]) as GameObject).GetComponent<Room> ());
+			boardManagerScript.AddRoomAtIndexAndSetPosition (roomData.roomIndex, (Instantiate (boardManagerScript.punishmentRoomPrefabs [0]) as GameObject).GetComponent<Room> ());
+		}
+
+		// Add Sinners
+		foreach (SinnerData sinnerData in gameData.boardData.sinnerDataList) {
+			GameObject sinner = Instantiate(boardManagerScript.sinnerPrefab);
+			SinnerScript sinnerScript = sinner.GetComponent<SinnerScript>();
+			sinnerScript.Sins.Add (new Sin(Sin.Type.Wrath, 100));
+
+			Room room;
+			boardManagerScript.roomsDict.TryGetValue(sinnerData.currentRoomIndex, out room);
+			room.OnSinnerArive(sinnerScript);
 		}
 
 		// Add relationships
 		foreach (RoomData roomData in gameData.boardData.roomDataList) {
 			Room room;
-			if (boardScript.roomsDict.TryGetValue(roomData.roomIndex, out room))
+			if (boardManagerScript.roomsDict.TryGetValue(roomData.roomIndex, out room))
 			{
 				if (roomData.nextRoomIndex != null)
 				{
 					Room nextRoom;
-					if (boardScript.roomsDict.TryGetValue(roomData.nextRoomIndex, out nextRoom))
+					if (boardManagerScript.roomsDict.TryGetValue(roomData.nextRoomIndex, out nextRoom))
 					{
 						room.NextRoom = nextRoom;
 					}
@@ -77,8 +95,9 @@ public class GameManagerScript : MonoBehaviour {
 
 	private void SaveGame() 
 	{
+		// Rooms and relationships
 		gameData.boardData.roomDataList.Clear ();
-		foreach (Room room in boardScript.roomsDict.Values) 
+		foreach (Room room in boardManagerScript.roomsDict.Values) 
 		{
 			if (!ShouldIgnore(room.roomIndex)) {
 				RoomData roomData = new RoomData();
@@ -90,6 +109,20 @@ public class GameManagerScript : MonoBehaviour {
 				gameData.boardData.roomDataList.Add(roomData);
 			}
 		}
+
+		// Sinners
+		GameObject[] sinners = GameObject.FindGameObjectsWithTag ("Sinner");
+		foreach (GameObject sinner in sinners) 
+		{
+			SinnerData sinnerData = new SinnerData();
+			SinnerScript sinnerScript = sinner.GetComponent<SinnerScript>();
+			if (sinnerScript.currentRoom != null)
+			{
+				sinnerData.currentRoomIndex = sinnerScript.currentRoom.roomIndex;
+				gameData.boardData.sinnerDataList.Add(sinnerData);
+			}
+		}
+
 		SaveLoad.Save (gameData);
 	}
 

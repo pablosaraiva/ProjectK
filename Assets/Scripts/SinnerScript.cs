@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public class Sinner : MonoBehaviour {
+public class SinnerScript : MonoBehaviour {
 
 	public Room currentRoom;
 	private List<Sin> sins = new List<Sin>();
@@ -12,7 +12,7 @@ public class Sinner : MonoBehaviour {
 
 	private int pointsOfPunishment = 0;
 
-	public void MoveToTarget(Vector3 target, Action<Sinner> onMoveFinishCallback){
+	public void MoveToTarget(Vector3 target, Action<SinnerScript> onMoveFinishCallback){
 		if (mouvementCoroutine != null) 
 		{
 			StopCoroutine (mouvementCoroutine);
@@ -23,7 +23,7 @@ public class Sinner : MonoBehaviour {
 	Coroutine mouvementCoroutine = null;
 
 
-	IEnumerator Movement (Vector3 target, Action<Sinner> onMoveFinishCallback)
+	IEnumerator Movement (Vector3 target, Action<SinnerScript> onMoveFinishCallback)
 	{
 		Animator animator = transform.Find("RenderObject").GetComponent<Animator> ();
 		animator.SetBool ("walking", true);

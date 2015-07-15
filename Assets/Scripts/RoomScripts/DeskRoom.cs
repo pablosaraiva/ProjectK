@@ -1,11 +1,11 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
 public class DeskRoom : Room {
 
-	Sinner sinner;
+	SinnerScript sinner;
 	public GameObject GoFirstRoomGUIPrefab;
 
 	private List<Room> firstRoomsList = new List<Room>();
@@ -28,7 +28,7 @@ public class DeskRoom : Room {
 		return false;
 	}
 
-	public override void OnSinnerArive (Sinner sinner)
+	public override void OnSinnerArive (SinnerScript sinner)
 	{
 		reserved = false;
 		this.sinner = sinner;
@@ -39,7 +39,7 @@ public class DeskRoom : Room {
 
 	}
 
-	public void ShowGUIOfFirstRooms(Sinner si){
+	public void ShowGUIOfFirstRooms(SinnerScript si){
 		GameObject guiHolder = new GameObject ("GUI HOLDER");
 		guiHolder.transform.SetParent (this.transform);
 		foreach(Room r in firstRoomsList){
@@ -87,7 +87,7 @@ public class DeskRoom : Room {
 		//Gritar, PROXIMO!!!
 	}
 
-	public override void WalkOutsideCallBack (Sinner sinner)
+	public override void WalkOutsideCallBack (SinnerScript sinner)
 	{
 		base.WalkOutsideCallBack (sinner);
 		this.NextRoom = null;

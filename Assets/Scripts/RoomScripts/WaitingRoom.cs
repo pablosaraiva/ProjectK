@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 public class WaitingRoom : Room {
@@ -6,14 +6,14 @@ public class WaitingRoom : Room {
 	private int capacity = 6;
 	private int reservedSlots = 0;
 
-	private List<Sinner> sinnersList;
+	private List<SinnerScript> sinnersList;
 
 
 
 
 	// Use this for initialization
 	void Start () {
-		sinnersList = new List<Sinner> ();
+		sinnersList = new List<SinnerScript> ();
 
 		InvokeRepeating ("TrySendToNextRoom", 1.0F, 1.0F);
 	}
@@ -24,7 +24,7 @@ public class WaitingRoom : Room {
 
 	void TrySendToNextRoom(){
 		if (sinnersList.Count > 0 && HasNextRoom () && this.NextRoom.CanSinnerArrive ()) {
-			Sinner sinnerToMove = sinnersList [0];
+			SinnerScript sinnerToMove = sinnersList [0];
 			sinnersList.Remove(sinnerToMove);
 			sinnerToMove.MoveToTarget(this.transform.position + new Vector3(roomWidth/2 + sinnerWidth/2, 0, 0), WalkOutsideCallBack);
 			this.NextRoom.ReserveSinnerPlace();
@@ -47,7 +47,7 @@ public class WaitingRoom : Room {
 		return sinnersList.Count + reservedSlots < capacity;
 	}
 
-	public override void OnSinnerArive (Sinner sinner) {
+	public override void OnSinnerArive (SinnerScript sinner) {
 		reservedSlots = Mathf.Max (0, reservedSlots - 1);
 		sinnersList.Add (sinner);
 		//TODO fix entry position
@@ -59,7 +59,7 @@ public class WaitingRoom : Room {
 
 	private void RearangeSinnersPosition(){
 		float distanceInterSinners = (roomWidth - sinnerWidth*1.5F)/(capacity -1);
-		foreach(Sinner si in sinnersList){
+		foreach(SinnerScript si in sinnersList){
 			Vector3 target = new Vector3 (this.transform.position.x + roomWidth/2F - sinnerWidth*1.5F/2F - distanceInterSinners*(sinnersList.IndexOf(si)), si.transform.position.y, 0);
 			si.MoveToTarget (target, null);
 		}

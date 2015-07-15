@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -6,10 +6,10 @@ public class SinnerCanvasController : MonoBehaviour {
 		
 
 	public Text text;
-	public Sinner sinner;
+	public SinnerScript sinner;
 	
 	void Start(){
-		sinner = transform.GetComponentInParent<Sinner> ();
+		sinner = transform.GetComponentInParent<SinnerScript> ();
 	}
 
 	// Update is called once per frame

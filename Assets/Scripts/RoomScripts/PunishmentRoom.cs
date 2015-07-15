@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,7 +18,7 @@ public class PunishmentRoom : Room {
 	public int roomCost;
 	
 
-	private Sinner sinner;
+	private SinnerScript sinner;
 	
 	public virtual void Punish(){
 		foreach(SinEntry se in punishments){
@@ -40,7 +40,7 @@ public class PunishmentRoom : Room {
 		return true;
 	}
 
-	public override void OnSinnerArive (Sinner sinner)
+	public override void OnSinnerArive (SinnerScript sinner)
 	{
 		reserved = false;
 		this.sinner = sinner;
@@ -48,9 +48,10 @@ public class PunishmentRoom : Room {
 		Vector3 startPos = new Vector3 (this.transform.position.x - (roomWidth/2 + sinnerWidth/2), this.transform.position.y, 0);
 		sinner.transform.position = startPos;
 		sinner.MoveToTarget(this.transform.position, SinnerArriveOnMiddleOfRoom);
+		sinner.currentRoom = this;
 	}
 
-	public void SinnerArriveOnMiddleOfRoom(Sinner sinner){
+	public void SinnerArriveOnMiddleOfRoom(SinnerScript sinner){
 		//TODO wait a little, or implements new animation.
 		Punish ();
 
@@ -65,7 +66,7 @@ public class PunishmentRoom : Room {
 		sinner.MoveToTarget(this.transform.position + new Vector3(roomWidth/2 + sinnerWidth/2, 0, 0), WalkOutsideCallBack);
 	}
 
-	public override void WalkOutsideCallBack (Sinner sinner)
+	public override void WalkOutsideCallBack (SinnerScript sinner)
 	{
 		base.WalkOutsideCallBack (sinner);
 		this.sinner = null;

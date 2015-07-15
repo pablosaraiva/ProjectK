@@ -71,7 +71,7 @@ public class BoardManager : MonoBehaviour {
 
 	void TrySendNextSinner(){
 		if (firstWaitRoomInstance.CanSinnerArrive ()) {
-			Sinner si = (Instantiate(sinnerPrefab) as GameObject).GetComponent<Sinner>();
+			SinnerScript si = (Instantiate(sinnerPrefab) as GameObject).GetComponent<SinnerScript>();
 			si.transform.SetParent(sinnersHolder);
 			//TODO change (random?) sin.Type assigment and amount
 			si.Sins.Add(new Sin(Sin.Type.Wrath, 100));

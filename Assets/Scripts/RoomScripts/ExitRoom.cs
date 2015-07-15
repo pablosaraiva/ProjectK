@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class ExitRoom : Room {
 
-	Sinner sinner;
+	SinnerScript sinner;
 
 
 	void Update () {
@@ -25,7 +25,7 @@ public class ExitRoom : Room {
 		return false;
 	}
 
-	public override void OnSinnerArive (Sinner sinner)
+	public override void OnSinnerArive (SinnerScript sinner)
 	{
 		reserved = false;
 		this.sinner = sinner;
@@ -35,7 +35,7 @@ public class ExitRoom : Room {
 		sinner.MoveToTarget(this.transform.position, SinnerArriveOnMiddleOfRoom);
 	}
 
-	public void SinnerArriveOnMiddleOfRoom(Sinner sinner){
+	public void SinnerArriveOnMiddleOfRoom(SinnerScript sinner){
 		Animator animator = sinner.transform.Find("RenderObject").GetComponent<Animator> ();
 
 		animator.SetTrigger ("gone");
