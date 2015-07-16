@@ -9,6 +9,8 @@ public abstract class Room : MonoBehaviour {
 	[HideInInspector]
 	public bool reserved = false;
 
+	public GameObject roomUIPrefab;
+
 	public readonly static float roomWidth = 128-6;
 	public readonly static float roomHeight = 64;
 	public readonly static float sinnerWidth = 18;
@@ -16,6 +18,13 @@ public abstract class Room : MonoBehaviour {
 	public GameObject pipePrefab;
 	private PipeScript pipe;
 	private BoardManager boardManager;
+
+	public void Awake(){
+		if (roomUIPrefab != null) {
+			GameObject roomUIinstance = Instantiate(roomUIPrefab, this.transform.position, this.transform.rotation) as GameObject;
+			roomUIinstance.transform.SetParent(this.transform);
+		}
+	}
 
 	public virtual bool HasNextRoom(){
 		return nextRoom != null;

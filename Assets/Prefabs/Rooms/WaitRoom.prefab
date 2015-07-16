@@ -163,7 +163,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b31bbdbc0dd12f4687863ce8a9f1154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  linkPrefab: {fileID: 161378, guid: d51d96e33f89b0f40a321bb233271d15, type: 2}
   CanvasRoomPrefab: {fileID: 142232, guid: 84f17f0f0a685f543ae0158727693cf7, type: 2}
 --- !u!114 &11461694
 MonoBehaviour:
@@ -193,6 +192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reserved: 0
+  roomUIPrefab: {fileID: 141380, guid: bc7edacbad4f53543b1f759eed9378b5, type: 2}
   pipePrefab: {fileID: 192704, guid: 588d61df08409654ebe9502acf18bc87, type: 2}
 --- !u!114 &11476336
 MonoBehaviour:
