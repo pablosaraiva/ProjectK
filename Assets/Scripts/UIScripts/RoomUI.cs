@@ -39,19 +39,23 @@ public class RoomUI : MonoBehaviour
 			GameObject link = Instantiate(linkPrefab, adjRoom.transform.position, Quaternion.identity) as GameObject;
 			Room capturedRoom = adjRoom;
 			Room thisCapturedRoom = this.room;
-			//link.transform.GetComponentInChildren<EventTrigger>().OnPointerClick(
-			/*
-			link.transform.GetComponentInChildren<Button>().onClick.AddListener(() => {
+			EventTrigger trigger = link.transform.GetComponentInChildren<EventTrigger>();
+			EventTrigger.Entry entry = new EventTrigger.Entry();
+			entry.eventID = EventTriggerType.PointerClick;
+			entry.callback.AddListener((eventData) => {
 				thisCapturedRoom.NextRoom = capturedRoom;
-				
 				ClickCancel();
-			});*/
+			});
+			trigger.triggers.Add(entry);
 			linkButtons.Add(link);
 		}
 	}
 
 	public void ClickCancel(){
-
+		foreach (GameObject link in linkButtons) {
+			Destroy(link);
+		}
+		linkButtons.Clear ();
 	}
 
 	public void OnClickCloseButton ()

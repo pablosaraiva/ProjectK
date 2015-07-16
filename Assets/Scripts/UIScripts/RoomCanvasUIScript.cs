@@ -30,8 +30,8 @@ public class RoomCanvasUIScript : MonoBehaviour {
 	}
 
 	public void ClickExit(){
+		roomUI.ClickCancel ();
 		Destroy(this.gameObject);
-
 	}
 
 	public RoomUI RoomUI {
