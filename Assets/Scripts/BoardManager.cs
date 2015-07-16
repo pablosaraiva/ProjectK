@@ -14,7 +14,7 @@ public class BoardManager : MonoBehaviour
 	public GameObject deskRoomPrefab;
 	public GameObject exitRoomPrefab;
 	public GameObject[] punishmentRoomPrefabs;
-	
+
 	private WaitingRoom firstWaitRoomInstance;
 	private DeskRoom deskRoomInstance;
 
@@ -179,4 +179,5 @@ public class BoardManager : MonoBehaviour
 		}
 		return adjRooms;
 	}
+
 }

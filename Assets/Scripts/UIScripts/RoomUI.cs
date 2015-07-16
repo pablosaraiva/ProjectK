@@ -20,10 +20,14 @@ public class RoomUI : MonoBehaviour
 
 	public void OnClickRoom ()
 	{
-		GameObject canvasRoom = Instantiate (CanvasRoomPrefab) as GameObject;
-
-		canvasRoom.GetComponent<RoomCanvasUIScript> ().RoomUI = this;
-		canvasRoom.GetComponent<RoomCanvasUIScript> ().Room = room;
+		if (room.isReady) {
+			GameObject canvasRoom = Instantiate (CanvasRoomPrefab) as GameObject;
+			
+			canvasRoom.GetComponent<RoomCanvasUIScript> ().RoomUI = this;
+			canvasRoom.GetComponent<RoomCanvasUIScript> ().Room = room;
+		} else {
+			room.isReady = true;
+		}
 	}
 
 	public void OnClickLink ()

@@ -18,6 +18,7 @@ public abstract class Room : MonoBehaviour {
 	public GameObject pipePrefab;
 	private PipeScript pipe;
 	private BoardManager boardManager;
+	public bool isReady = false;
 
 	public void Awake(){
 		if (roomUIPrefab != null) {
