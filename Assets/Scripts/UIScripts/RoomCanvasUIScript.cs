@@ -23,8 +23,6 @@ public class RoomCanvasUIScript : MonoBehaviour {
 			link.transform.GetComponentInChildren<Button>().onClick.AddListener(() => {
 				thisCapturedRoom.NextRoom = capturedRoom;
 				
-				ClickCancel();
-
 				ClickExit();
 			});
 			buttons.Add(link);
@@ -33,13 +31,7 @@ public class RoomCanvasUIScript : MonoBehaviour {
 
 	public void ClickExit(){
 		Destroy(this.gameObject);
-	}
 
-	public void ClickCancel(){
-		foreach (GameObject buttonObject in buttons) {
-			Destroy(buttonObject.gameObject);
-		}
-		buttons.Clear ();
 	}
 
 	public RoomUI RoomUI {
