@@ -16,10 +16,16 @@ public class RoomUI : MonoBehaviour
 	public void Start ()
 	{
 		room = transform.GetComponentInParent<Room> ();
+		if (room.NextRoom != null) {
+			this.transform.FindChild("Canvas").FindChild("LinkImage").gameObject.SetActive(false);
+			this.transform.FindChild("Canvas").FindChild("CancelPipe").gameObject.SetActive(true);
+		}
 	}
 
 	public void OnClickRoom ()
 	{
+		//At this moment we are not using this. But it may be usefull
+		/*
 		if (room.isReady) {
 			GameObject canvasRoom = Instantiate (CanvasRoomPrefab) as GameObject;
 			
@@ -27,7 +33,7 @@ public class RoomUI : MonoBehaviour
 			canvasRoom.GetComponent<RoomCanvasUIScript> ().Room = room;
 		} else {
 			room.isReady = true;
-		}
+		}*/
 	}
 
 	public void OnClickLink ()
@@ -45,7 +51,7 @@ public class RoomUI : MonoBehaviour
 			entry.eventID = EventTriggerType.PointerClick;
 			entry.callback.AddListener ((eventData) => {
 				thisCapturedRoom.NextRoom = capturedRoom;
-				ClickCancel ();
+				ClaerLinkButtons();
 			});
 			trigger.triggers.Add (entry);
 			linkButtons.Add (link);
@@ -54,6 +60,12 @@ public class RoomUI : MonoBehaviour
 
 	public void ClickCancel ()
 	{
+		room.NextRoom = null;
+		ClaerLinkButtons ();
+	}
+
+	private void ClaerLinkButtons(){
+		
 		foreach (GameObject link in linkButtons) {
 			Destroy (link);
 		}
