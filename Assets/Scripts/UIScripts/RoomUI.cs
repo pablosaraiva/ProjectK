@@ -17,6 +17,7 @@ public class RoomUI : MonoBehaviour
 	{
 		room = transform.GetComponentInParent<Room> ();
 		if (room.NextRoom != null) {
+			//maybe pass that in the inspector.
 			this.transform.FindChild("Canvas").FindChild("LinkImage").gameObject.SetActive(false);
 			this.transform.FindChild("Canvas").FindChild("CancelPipe").gameObject.SetActive(true);
 		}
