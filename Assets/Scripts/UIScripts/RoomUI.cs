@@ -30,11 +30,15 @@ public class RoomUI : MonoBehaviour
 			return;
 		}
 
+		foreach (Room adjacentRoom in room.BoardManager.AdjacentRooms(room)) {
+			if (room.Equals (adjacentRoom.NextRoom)) {
+				adjacentRoom.NextRoom = null;
+			}
+		}
+
 		Destroy (room.BoardManager.roomsDict [room.roomIndex]);
-
+		Destroy (room.BoardManager.roomsDict [room.roomIndex].gameObject);
 		room.BoardManager.roomsDict.Remove (room.roomIndex);
-
-		room = null;
 
 		Debug.Log ("End OnClickCloseButton");
 	}
