@@ -11,7 +11,7 @@ public class RoomUI : MonoBehaviour
 	private Room room;
 	public GameObject linkPrefab;
 
-	private List<GameObject> linkButtons = new List<GameObject>();
+	private List<GameObject> linkButtons = new List<GameObject> ();
 
 	public void Start ()
 	{
@@ -26,13 +26,14 @@ public class RoomUI : MonoBehaviour
 		canvasRoom.GetComponent<RoomCanvasUIScript> ().Room = room;
 	}
 
-	public void OnClickLink(){
-		if (room==null || room.BoardManager == null)
+	public void OnClickLink ()
+	{
+		if (room == null || room.BoardManager == null)
 			return;
 		
 		
 		foreach (Room adjRoom in room.BoardManager.AdjacentRooms(room)) {
-			GameObject link = Instantiate(linkPrefab, adjRoom.transform.position, Quaternion.identity) as GameObject;
+			GameObject link = Instantiate (linkPrefab, adjRoom.transform.position, Quaternion.identity) as GameObject;
 			Room capturedRoom = adjRoom;
 			Room thisCapturedRoom = this.room;
 			//link.transform.GetComponentInChildren<EventTrigger>().OnPointerClick(
@@ -42,33 +43,18 @@ public class RoomUI : MonoBehaviour
 				
 				ClickCancel();
 			});*/
-			linkButtons.Add(link);
+			linkButtons.Add (link);
 		}
 	}
 
-	public void ClickCancel(){
+	public void ClickCancel ()
+	{
 
 	}
 
 	public void OnClickCloseButton ()
 	{
-		Debug.Log ("Begin OnClickCloseButton");
-
-		if (room == null || room.BoardManager == null) {
-			return;
-		}
-
-		foreach (Room adjacentRoom in room.BoardManager.AdjacentRooms(room)) {
-			if (room.Equals (adjacentRoom.NextRoom)) {
-				adjacentRoom.NextRoom = null;
-			}
-		}
-
-		Destroy (room.BoardManager.roomsDict [room.roomIndex]);
-		Destroy (room.BoardManager.roomsDict [room.roomIndex].gameObject);
-		room.BoardManager.roomsDict.Remove (room.roomIndex);
-
-		Debug.Log ("End OnClickCloseButton");
+		room.BoardManager.RemoveRoom (room);
 	}
 
 	public void SetHighLight (bool hightlight)
