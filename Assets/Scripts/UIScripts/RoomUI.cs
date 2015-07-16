@@ -21,26 +21,10 @@ public class RoomUI : MonoBehaviour
 		canvasRoom.GetComponent<RoomCanvasUIScript> ().RoomUI = this;
 		canvasRoom.GetComponent<RoomCanvasUIScript> ().Room = room;
 	}
-
+	
 	public void OnClickCloseButton ()
 	{
-		Debug.Log ("Begin OnClickCloseButton");
-
-		if (room == null || room.BoardManager == null) {
-			return;
-		}
-
-		foreach (Room adjacentRoom in room.BoardManager.AdjacentRooms(room)) {
-			if (room.Equals (adjacentRoom.NextRoom)) {
-				adjacentRoom.NextRoom = null;
-			}
-		}
-
-		Destroy (room.BoardManager.roomsDict [room.roomIndex]);
-		Destroy (room.BoardManager.roomsDict [room.roomIndex].gameObject);
-		room.BoardManager.roomsDict.Remove (room.roomIndex);
-
-		Debug.Log ("End OnClickCloseButton");
+		room.BoardManager.RemoveRoom (room);
 	}
 
 	public void SetHighLight (bool hightlight)
