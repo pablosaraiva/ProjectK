@@ -12,10 +12,10 @@ public class RoomCanvasUIScript : MonoBehaviour {
 	private List<GameObject> buttons = new List<GameObject>();
 
 	public void ClickBuyLink(){
-		if (room==null || room.BoardManager == null)
+		if (room == null || room.BoardManager == null) {
 			return;
-		
-		
+		}
+
 		foreach (Room adjRoom in room.BoardManager.AdjacentRooms(room)) {
 			GameObject link = Instantiate(linkPrefab, adjRoom.transform.position, Quaternion.identity) as GameObject;
 			Room capturedRoom = adjRoom;
