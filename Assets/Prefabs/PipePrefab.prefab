@@ -68,6 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8f6686a77f959243b2955abab231c60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pipeArrowPrefab: {fileID: 130012, guid: fee102c4a18b8f248b9c8a4ef9355a81, type: 2}
 --- !u!212 &21274880
 SpriteRenderer:
   m_ObjectHideFlags: 1
