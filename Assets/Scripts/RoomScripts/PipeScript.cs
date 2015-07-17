@@ -26,9 +26,12 @@ public class PipeScript : MonoBehaviour {
 		set {
 			highlight = value;
 			Color c = pipeRenderer.color;
+			CancelInvoke();
 			if (highlight) {
+				InvokeRepeating ("CreateArrows", 0.3f, 0.3f);
 				c.a = 1;
 			} else {
+				InvokeRepeating ("CreateArrows", 0.8f, 0.8f);
 				c.a = 45F/255F;
 			}
 			pipeRenderer.color = c;
@@ -71,9 +74,15 @@ public class PipeScript : MonoBehaviour {
 		Destroy (arrow.gameObject);
 	}
 
-	private void ClearArrows(){
+	public void OnDestroy(){
+		ClearArrows ();
+	}
+
+	public void ClearArrows(){
 		foreach (PipeArrow arrow in pipeArrowsList) {
-			Destroy(arrow.gameObject);
+			//To Prevent Error when closing the game/ as the destroy is async, It veryfies if exist befero destroy
+			if(arrow!=null && arrow.gameObject!=null)
+				Destroy(arrow.gameObject);
 		}
 		pipeArrowsList.Clear ();
 	}
