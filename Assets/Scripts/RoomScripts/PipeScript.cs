@@ -66,6 +66,7 @@ public class PipeScript : MonoBehaviour {
 		PipeArrow arrow = (Instantiate (pipeArrowPrefab, enterPoint, this.transform.rotation) as GameObject).GetComponent<PipeArrow>();
 		pipeArrowsList.Add (arrow);
 		arrow.SetHighLight (highlight);
+		arrow.transform.SetParent (this.transform);
 		arrow.MoveToTarget (exitPoint, PipeArrowArriveEndCallback);
 	}
 
