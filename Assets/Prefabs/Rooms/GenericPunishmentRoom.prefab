@@ -100,6 +100,7 @@ MonoBehaviour:
   reserved: 0
   roomUIPrefab: {fileID: 141380, guid: bc7edacbad4f53543b1f759eed9378b5, type: 2}
   pipePrefab: {fileID: 192704, guid: 588d61df08409654ebe9502acf18bc87, type: 2}
+  isReady: 0
   punishments:
   - type: 0
     amount: 20
@@ -140,8 +141,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1120290591
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b44751fd0708db54cb26617803a293e5, type: 3}
-  m_Color: {r: .889705896, g: .294387996, b: .294387996, a: 1}
+  m_Sprite: {fileID: 21300000, guid: bfa64e2f75554804e816b0cdaa024b65, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21255958
 SpriteRenderer:
   m_ObjectHideFlags: 1
