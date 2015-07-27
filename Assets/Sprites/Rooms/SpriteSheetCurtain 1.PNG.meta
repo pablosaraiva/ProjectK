@@ -1,20 +1,21 @@
 fileFormatVersion: 2
-guid: 94ea8b7283b560c42a3e8950720a7fe0
-timeCreated: 1437979284
+guid: f4909d63e1df55e4cafdbc7aba786183
+timeCreated: 1438002715
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: SpriteSheetCurtain_0
-    21300002: SpriteSheetCurtain_1
-    21300004: SpriteSheetCurtain_2
-    21300006: SpriteSheetCurtain_3
-    21300008: SpriteSheetCurtain_4
-    21300010: SpriteSheetCurtain_5
-    21300012: SpriteSheetCurtain_6
-    21300014: SpriteSheetCurtain_7
-    21300016: SpriteSheetCurtain_8
-    21300018: SpriteSheetCurtain_9
-    21300020: SpriteSheetCurtain_10
+    21300000: SpriteSheetCurtain 1_0
+    21300002: SpriteSheetCurtain 1_1
+    21300004: SpriteSheetCurtain 1_2
+    21300006: SpriteSheetCurtain 1_3
+    21300008: SpriteSheetCurtain 1_4
+    21300010: SpriteSheetCurtain 1_5
+    21300012: SpriteSheetCurtain 1_6
+    21300014: SpriteSheetCurtain 1_7
+    21300016: SpriteSheetCurtain 1_8
+    21300018: SpriteSheetCurtain 1_9
+    21300020: SpriteSheetCurtain 1_10
+    21300022: SpriteSheetCurtain 0
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -60,115 +61,125 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: SpriteSheetCurtain_0
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 2
-        width: 120
-        height: 55
-      alignment: 7
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: SpriteSheetCurtain_1
+    - name: SpriteSheetCurtain 1_0
       rect:
         serializedVersion: 2
         x: 123
-        y: 2
+        y: 1
         width: 120
-        height: 55
+        height: 56
       alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: SpriteSheetCurtain_2
+    - name: SpriteSheetCurtain 1_1
       rect:
         serializedVersion: 2
         x: 245
-        y: 2
+        y: 1
         width: 120
-        height: 55
+        height: 56
       alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: SpriteSheetCurtain_3
+    - name: SpriteSheetCurtain 1_2
       rect:
         serializedVersion: 2
         x: 367
-        y: 2
+        y: 1
         width: 120
-        height: 55
+        height: 56
       alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: SpriteSheetCurtain_4
+    - name: SpriteSheetCurtain 1_3
       rect:
         serializedVersion: 2
         x: 489
-        y: 2
+        y: 1
         width: 120
-        height: 55
+        height: 56
       alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: SpriteSheetCurtain_5
+    - name: SpriteSheetCurtain 1_4
       rect:
         serializedVersion: 2
         x: 611
-        y: 2
+        y: 1
         width: 120
-        height: 55
+        height: 56
       alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: SpriteSheetCurtain_6
+    - name: SpriteSheetCurtain 1_5
       rect:
         serializedVersion: 2
         x: 733
-        y: 2
+        y: 1
         width: 120
-        height: 55
+        height: 56
       alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: SpriteSheetCurtain_7
+    - name: SpriteSheetCurtain 1_6
       rect:
         serializedVersion: 2
         x: 855
-        y: 2
+        y: 1
         width: 120
-        height: 55
+        height: 56
       alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: SpriteSheetCurtain_8
+    - name: SpriteSheetCurtain 1_7
       rect:
         serializedVersion: 2
         x: 977
-        y: 2
+        y: 1
         width: 120
-        height: 55
+        height: 56
       alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: SpriteSheetCurtain_9
+    - name: SpriteSheetCurtain 1_8
       rect:
         serializedVersion: 2
         x: 1099
-        y: 2
+        y: 1
         width: 120
-        height: 55
+        height: 56
       alignment: 7
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: SpriteSheetCurtain_10
+    - name: SpriteSheetCurtain 1_9
       rect:
         serializedVersion: 2
         x: 1221
-        y: 2
+        y: 1
         width: 120
-        height: 55
+        height: 56
       alignment: 7
       pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetCurtain 1_10
+      rect:
+        serializedVersion: 2
+        x: 1343
+        y: 1
+        width: 120
+        height: 56
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetCurtain 0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 120
+        height: 56
+      alignment: 7
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

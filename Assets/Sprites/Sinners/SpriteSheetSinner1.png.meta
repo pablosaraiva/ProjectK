@@ -1,9 +1,45 @@
 fileFormatVersion: 2
 guid: cee01cd29ed62504e839488135fa1d67
-timeCreated: 1437074431
+timeCreated: 1438007509
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: SpriteSheetSinner1_0
+    21300002: SpriteSheetSinner1_1
+    21300004: SpriteSheetSinner1_2
+    21300006: SpriteSheetSinner1_3
+    21300008: SpriteSheetSinner1_4
+    21300010: SpriteSheetSinner1_5
+    21300012: SpriteSheetSinner1_6
+    21300014: SpriteSheetSinner1_7
+    21300016: SpriteSheetSinner1_8
+    21300018: SpriteSheetSinner1_9
+    21300020: SpriteSheetSinner1_10
+    21300022: SpriteSheetSinner1_11
+    21300024: SpriteSheetSinner1_12
+    21300026: SpriteSheetSinner1_13
+    21300028: SpriteSheetSinner1_14
+    21300030: SpriteSheetSinner1_15
+    21300032: SpriteSheetSinner1_16
+    21300034: SpriteSheetSinner1_17
+    21300036: SpriteSheetSinner1_18
+    21300038: SpriteSheetSinner1_19
+    21300040: SpriteSheetSinner1_20
+    21300042: SpriteSheetSinner1_21
+    21300044: SpriteSheetSinner1_22
+    21300046: SpriteSheetSinner1_23
+    21300048: SpriteSheetSinner1_24
+    21300050: SpriteSheetSinner1_25
+    21300052: SpriteSheetSinner1_26
+    21300054: SpriteSheetSinner1_27
+    21300056: SpriteSheetSinner1_28
+    21300058: SpriteSheetSinner1_29
+    21300060: SpriteSheetSinner1_30
+    21300062: SpriteSheetSinner1_31
+    21300064: SpriteSheetSinner1_32
+    21300066: SpriteSheetSinner1_33
+    21300068: SpriteSheetSinner1_34
+    21300070: SpriteSheetSinner1_35
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -37,7 +73,7 @@ TextureImporter:
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 7
@@ -48,7 +84,367 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: SpriteSheetSinner1_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 65
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_1
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 65
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_2
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 65
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_3
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 65
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_4
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 65
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_5
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 65
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_6
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 65
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_7
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 65
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_8
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 65
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_9
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 65
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_10
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 65
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_11
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 65
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_12
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 33
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_13
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 33
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_14
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 33
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_15
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 33
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_16
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_17
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 1
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_18
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 1
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_19
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 1
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_20
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 1
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_21
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_22
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 1
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_23
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 1
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_24
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 1
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_25
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 1
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_26
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 1
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_27
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 1
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_28
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 1
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_29
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 1
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_30
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 1
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_31
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 1
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_32
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 1
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_33
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 1
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_34
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 1
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetSinner1_35
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 1
+        width: 17
+        height: 30
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
   assetBundleName: 
