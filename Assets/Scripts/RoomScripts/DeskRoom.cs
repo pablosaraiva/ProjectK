@@ -30,6 +30,7 @@ public class DeskRoom : Room {
 
 	public override void OnSinnerArive (SinnerScript sinner)
 	{
+		sinner.SetBig (true);
 		reserved = false;
 		this.sinner = sinner;
 
@@ -89,6 +90,7 @@ public class DeskRoom : Room {
 
 	public override void WalkOutsideCallBack (SinnerScript sinner)
 	{
+		sinner.SetBig (false);
 		base.WalkOutsideCallBack (sinner);
 		this.NextRoom = null;
 

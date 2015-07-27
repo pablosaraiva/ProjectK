@@ -1,9 +1,25 @@
 fileFormatVersion: 2
 guid: 466040e9150e1e149ba1275056689852
-timeCreated: 1437087168
+timeCreated: 1437974957
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: SpriteSheetBigSinner1_0
+    21300002: SpriteSheetBigSinner1_1
+    21300004: SpriteSheetBigSinner1_2
+    21300006: SpriteSheetBigSinner1_3
+    21300008: SpriteSheetBigSinner1_4
+    21300010: SpriteSheetBigSinner1_5
+    21300012: SpriteSheetBigSinner1_6
+    21300014: SpriteSheetBigSinner1_7
+    21300016: SpriteSheetBigSinner1_8
+    21300018: SpriteSheetBigSinner1_9
+    21300020: SpriteSheetBigSinner1_10
+    21300022: SpriteSheetBigSinner1_11
+    21300024: SpriteSheetBigSinner1_12
+    21300026: SpriteSheetBigSinner1_13
+    21300028: SpriteSheetBigSinner1_14
+    21300030: SpriteSheetBigSinner1_15
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -29,7 +45,7 @@ TextureImporter:
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
+    filterMode: 0
     aniso: 16
     mipBias: -1
     wrapMode: 1
@@ -37,18 +53,178 @@ TextureImporter:
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 7
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 1
+  spritePixelsToUnits: 2
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: SpriteSheetBigSinner1_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 62
+        width: 33
+        height: 59
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetBigSinner1_1
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 62
+        width: 33
+        height: 59
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetBigSinner1_2
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 62
+        width: 33
+        height: 59
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetBigSinner1_3
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 62
+        width: 33
+        height: 59
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetBigSinner1_4
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 62
+        width: 33
+        height: 59
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetBigSinner1_5
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 62
+        width: 33
+        height: 59
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetBigSinner1_6
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 62
+        width: 33
+        height: 59
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetBigSinner1_7
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 62
+        width: 33
+        height: 59
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetBigSinner1_8
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 62
+        width: 33
+        height: 59
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetBigSinner1_9
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 62
+        width: 33
+        height: 59
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetBigSinner1_10
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 62
+        width: 33
+        height: 59
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetBigSinner1_11
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 62
+        width: 33
+        height: 59
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetBigSinner1_12
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 33
+        height: 59
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetBigSinner1_13
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 1
+        width: 33
+        height: 59
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetBigSinner1_14
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 1
+        width: 33
+        height: 59
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheetBigSinner1_15
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 1
+        width: 33
+        height: 59
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
   assetBundleName: 

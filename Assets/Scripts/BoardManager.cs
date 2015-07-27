@@ -15,7 +15,7 @@ public class BoardManager : MonoBehaviour
 	public GameObject exitRoomPrefab;
 	public GameObject[] punishmentRoomPrefabs;
 
-	private WaitingRoom firstWaitRoomInstance;
+
 	private DeskRoom deskRoomInstance;
 
 	private float roomWidth = Room.roomWidth;
@@ -41,13 +41,7 @@ public class BoardManager : MonoBehaviour
 
 		//Create the deskroom
 		deskRoomInstance = (Instantiate (deskRoomPrefab, Vector3.zero, Quaternion.identity) as GameObject).GetComponent<DeskRoom> ();
-		AddRoomAtIndexAndSetPosition (new RoomIndex (-1, 0), deskRoomInstance);
-
-		//create waiting Room
-		firstWaitRoomInstance = (Instantiate (waitingRoomPrefab, Vector3.zero, Quaternion.identity)as GameObject).GetComponent<WaitingRoom> ();
-		AddRoomAtIndexAndSetPosition (new RoomIndex (-2, 0), firstWaitRoomInstance);
-
-		firstWaitRoomInstance.NextRoom = deskRoomInstance;
+		AddRoomAtIndexAndSetPosition (new RoomIndex (-2, 0), deskRoomInstance);
 
 		CreateInitialRooms ();
 
@@ -111,12 +105,12 @@ public class BoardManager : MonoBehaviour
 
 	void TrySendNextSinner ()
 	{
-		if (firstWaitRoomInstance.CanSinnerArrive ()) {
+		if (deskRoomInstance.CanSinnerArrive ()) {
 			SinnerScript si = (Instantiate (sinnerPrefab) as GameObject).GetComponent<SinnerScript> ();
 			si.transform.SetParent (sinnersHolder);
 			//TODO change (random?) sin.Type assigment and amount
 			si.Sins.Add (new Sin (Sin.Type.Wrath, 100));
-			firstWaitRoomInstance.OnSinnerArive (si);
+			deskRoomInstance.OnSinnerArive (si);
 		}
 	}
 
