@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using System.Collections;
 
 public class CamController : MonoBehaviour {
@@ -27,7 +28,11 @@ public class CamController : MonoBehaviour {
 			Vector3 delta = lastPosition - Input.mousePosition;
 			transform.Translate(delta.x * mouseSensitivity, delta.y * mouseSensitivity, 0);
 			lastPosition = Input.mousePosition;
+
 		}
+
+		if (transform.position.x - camera.orthographicSize < -500)
+			transform.position = new Vector3 (-500 + camera.orthographicSize, transform.position.y, transform.position.z);
 	}
 
 

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class RoomUI : MonoBehaviour
 {
 
-	public GameObject CanvasRoomPrefab;
+
 	private Room room;
 	public GameObject linkPrefab;
 

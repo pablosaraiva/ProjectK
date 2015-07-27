@@ -151,7 +151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b31bbdbc0dd12f4687863ce8a9f1154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CanvasRoomPrefab: {fileID: 142232, guid: 84f17f0f0a685f543ae0158727693cf7, type: 2}
   linkPrefab: {fileID: 161378, guid: d51d96e33f89b0f40a321bb233271d15, type: 2}
 --- !u!114 &11427720
 MonoBehaviour:

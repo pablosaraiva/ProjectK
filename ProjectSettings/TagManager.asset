@@ -47,6 +47,9 @@ TagManager:
   - name: MapBackground
     uniqueID: 1812785541
     locked: 0
+  - name: Pipes
+    uniqueID: 3740391425
+    locked: 0
   - name: RoomBackGround
     uniqueID: 1120290591
     locked: 0

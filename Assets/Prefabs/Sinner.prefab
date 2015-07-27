@@ -561,7 +561,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 1791462131
-  m_SortingOrder: 0
+  m_SortingOrder: 3
 --- !u!224 &22412348
 RectTransform:
   m_ObjectHideFlags: 1
