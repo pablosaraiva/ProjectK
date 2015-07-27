@@ -16,7 +16,8 @@ public class PunishmentRoom : Room {
 	public SinEntry[] punishments;
 
 	public int roomCost;
-	
+
+	private float punishTime = 5f;
 
 	private SinnerScript sinner;
 	
@@ -53,9 +54,9 @@ public class PunishmentRoom : Room {
 
 	public void SinnerArriveOnMiddleOfRoom(SinnerScript sinner){
 		//TODO wait a little, or implements new animation.
-		Punish ();
+		StartCoroutine (PunishmentSequence ());
 
-		StartCoroutine (TryToSendNextRoom());
+
 	}
 
 	public IEnumerator TryToSendNextRoom(){
@@ -71,5 +72,16 @@ public class PunishmentRoom : Room {
 		base.WalkOutsideCallBack (sinner);
 		this.sinner = null;
 		this.reserved = false;
+	}
+
+	public IEnumerator PunishmentSequence(){
+		transform.FindChild ("curtain").GetComponent<Animator> ().SetBool ("curtains", true);
+		
+		yield return new WaitForSeconds (punishTime);
+		Punish ();
+
+		transform.FindChild ("curtain").GetComponent<Animator> ().SetBool ("curtains", false);
+		yield return new WaitForSeconds (1f);
+		StartCoroutine (TryToSendNextRoom());
 	}
 }
