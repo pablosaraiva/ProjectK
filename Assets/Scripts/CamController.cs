@@ -31,8 +31,10 @@ public class CamController : MonoBehaviour {
 
 		}
 
-		if (transform.position.x - camera.orthographicSize < -500)
-			transform.position = new Vector3 (-500 + camera.orthographicSize, transform.position.y, transform.position.z);
+		if (transform.position.x - (camera.orthographicSize) < -665) {
+			print(camera.orthographicSize/2);
+			transform.position = new Vector3 (-665 + (camera.orthographicSize), transform.position.y, transform.position.z);
+		}
 	}
 
 
