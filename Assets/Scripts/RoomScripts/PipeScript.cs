@@ -50,7 +50,7 @@ public class PipeScript : MonoBehaviour {
 		//Debug.Log (roomTo.position);
 		transform.position = ((exitPoint + enterPoint) / 2F);
 		transform.rotation = Quaternion.identity;
-		//print (enterPoint + "  " + exitPoint + "  " + Vector3.Angle(new Vector3(1,0,0), exitPoint - enterPoint));
+
 		float angle = Vector3.Angle (new Vector3 (1, 0, 0), exitPoint - enterPoint);
 		if (Vector3.Cross (new Vector3(1, 0, 0), exitPoint - enterPoint).z < 0)
 			angle = 360 - angle;

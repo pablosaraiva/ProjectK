@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
@@ -117,6 +117,7 @@ public class BoardManager : MonoBehaviour
 
 	public bool IsSlotFree (RoomIndex ri)
 	{
+		if(ri.x<0) return false;
 		return !roomsDict.ContainsKey (ri);
 	}
 	public bool IsSlotFree (int indexX, int indexY)

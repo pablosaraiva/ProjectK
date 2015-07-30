@@ -20,7 +20,7 @@ public abstract class Room : MonoBehaviour {
 	private BoardManager boardManager;
 	public bool isReady = false;
 
-	public void Awake(){
+	public virtual void Awake(){
 		if (roomUIPrefab != null) {
 			GameObject roomUIinstance = Instantiate(roomUIPrefab, this.transform.position, this.transform.rotation) as GameObject;
 			roomUIinstance.transform.SetParent(this.transform);

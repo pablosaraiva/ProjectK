@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -30,7 +30,6 @@ public class GameManagerScript : MonoBehaviour
 		gameData = new GameData ();
 		boardManagerScript.StetupScene ();
 		GameObject HudManager = Instantiate (gameHUD);
-		HudManager.transform.Find ("NewPunishmentRoomButton").GetComponent<NewPunishmentRoomButton> ().setBoardManager(boardManagerScript);
 
 
 		int loadGame = PlayerPrefs.GetInt ("LoadGame");

@@ -5,10 +5,29 @@ using System.Collections.Generic;
 
 public class DeskRoom : Room {
 
-	SinnerScript sinner;
+
+	SinnerScript onDeskSinner;
 	public GameObject GoFirstRoomGUIPrefab;
 
+	private int capacity = 8;
+	private List<SinnerScript> waitingSinnersList;
+
+	//Positions to guide the sinner
+	[SerializeField] private Transform entryTransform;
+	[SerializeField] private Transform firstOnLineTranform;
+	[SerializeField] private Transform lastOnLineTranform;
+	[SerializeField] private Transform daskWaitTransform;
+
 	private List<Room> firstRoomsList = new List<Room>();
+
+	public override void Awake(){
+		base.Awake ();
+		waitingSinnersList = new List<SinnerScript> ();
+	}
+
+	public void Start(){
+		InvokeRepeating ("TryToSendNextToDesk", 1f, 1f);
+	}
 	
 	void Update () {
 	}
@@ -20,7 +39,7 @@ public class DeskRoom : Room {
 
 	public override bool CanSinnerArrive ()
 	{
-		return this.sinner == null && !reserved;
+		return this.waitingSinnersList.Count < capacity;
 	}
 
 	public override bool CanSetNextRoom ()
@@ -31,15 +50,16 @@ public class DeskRoom : Room {
 	public override void OnSinnerArive (SinnerScript sinner)
 	{
 		sinner.SetBig (true);
-		reserved = false;
-		this.sinner = sinner;
+		waitingSinnersList.Add (sinner);
 
-		Vector3 startPos = new Vector3 (this.transform.position.x - (roomWidth/2 + sinnerWidth/2), this.transform.position.y, 0);
+		Vector3 startPos = entryTransform.position;//new Vector3 (this.transform.position.x - (roomWidth/2 + sinnerWidth/2), this.transform.position.y, 0);
 		sinner.transform.position = startPos;
-		sinner.MoveToTarget(this.transform.position, ShowGUIOfFirstRooms);
+		RearangeSinnersPosition ();
 
 	}
 
+
+	//When The sinner Arrive at DEsk, A GUI show to player choose where to go
 	public void ShowGUIOfFirstRooms(SinnerScript si){
 		GameObject guiHolder = new GameObject ("GUI HOLDER");
 		guiHolder.transform.SetParent (this.transform);
@@ -51,9 +71,9 @@ public class DeskRoom : Room {
 				if(capturedRoom.CanSinnerArrive()){
 					this.NextRoom = capturedRoom;
 					capturedRoom.ReserveSinnerPlace();
-					sinner.MoveToTarget (this.transform.position + new Vector3 (roomWidth / 2 + sinnerWidth / 2, 0, 0), WalkOutsideCallBack);
+					onDeskSinner.MoveToTarget (this.transform.position + new Vector3 (roomWidth / 2 + sinnerWidth / 2, 0, 0), WalkOutsideCallBack);
 					Destroy(guiHolder);
-					Invoke("FreeRoomForNextSinner", 0.8F);
+					Invoke("FreeDeskForNextSinner", 0.8F);
 				}
 			});
 		}
@@ -64,7 +84,7 @@ public class DeskRoom : Room {
 		Transform gh = transform.Find("GUI HOLDER");
 		if (gh != null) {
 			Destroy(gh.gameObject);
-			ShowGUIOfFirstRooms(sinner);
+			ShowGUIOfFirstRooms(onDeskSinner);
 		}
 
 	}
@@ -74,7 +94,7 @@ public class DeskRoom : Room {
 		Transform gh = transform.Find("GUI HOLDER");
 		if (gh != null) {
 			Destroy(gh.gameObject);
-			ShowGUIOfFirstRooms(sinner);
+			ShowGUIOfFirstRooms(onDeskSinner);
 		}
 	}
 
@@ -82,9 +102,8 @@ public class DeskRoom : Room {
 		return firstRoomsList;
 	}
 
-	private void FreeRoomForNextSinner(){
-		this.sinner = null;
-		this.reserved = false;
+	private void FreeDeskForNextSinner(){
+		this.onDeskSinner = null;
 		//Gritar, PROXIMO!!!
 	}
 
@@ -94,6 +113,25 @@ public class DeskRoom : Room {
 		base.WalkOutsideCallBack (sinner);
 		this.NextRoom = null;
 
+	}
+
+	public void TryToSendNextToDesk(){
+		if (waitingSinnersList.Count > 0 && onDeskSinner == null) {
+			onDeskSinner = waitingSinnersList[0];
+			waitingSinnersList.Remove(onDeskSinner);
+
+			onDeskSinner.MoveToTarget(daskWaitTransform.position, ShowGUIOfFirstRooms);
+
+			RearangeSinnersPosition();
+		}
+	}
+
+	private void RearangeSinnersPosition(){
+
+		foreach (SinnerScript si in waitingSinnersList) {
+			Vector3 target = firstOnLineTranform.position - waitingSinnersList.IndexOf(si)*(firstOnLineTranform.position - lastOnLineTranform.position)/(capacity-1);
+			si.MoveToTarget(target, null);
+		}
 	}
 
 }

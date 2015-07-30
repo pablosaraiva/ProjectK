@@ -50,7 +50,8 @@ public class WaitingRoom : Room {
 	public override void OnSinnerArive (SinnerScript sinner) {
 		reservedSlots = Mathf.Max (0, reservedSlots - 1);
 		sinnersList.Add (sinner);
-		//TODO fix entry position
+
+
 		Vector3 startPos = new Vector3 (this.transform.position.x - (roomWidth/2 + sinnerWidth/2), this.transform.position.y + Random.Range(-3F, 3F), 0);
 		sinner.transform.position = startPos;
 

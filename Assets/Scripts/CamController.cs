@@ -30,9 +30,9 @@ public class CamController : MonoBehaviour {
 			lastPosition = Input.mousePosition;
 
 		}
-
+		//TODO Limit the x posiiton on the left side
 		if (transform.position.x - (camera.orthographicSize) < -665) {
-			print(camera.orthographicSize/2);
+
 			transform.position = new Vector3 (-665 + (camera.orthographicSize), transform.position.y, transform.position.z);
 		}
 	}
